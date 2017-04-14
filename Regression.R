@@ -1,4 +1,4 @@
-#STANFORD LINEAR REGRESSION STATSLEARN
+# LINEAR REGRESSION STATSLEARN
 
 
 
@@ -23,6 +23,9 @@ plot1<-ggplot(aes(x = lstat, y = medv),data = Boston) +
     geom_smooth(method = 'lm')
 #inverse relation b/w the variables-as the lower status population % increases the Median sallaries decreases
 
+
+
+#PREDICTIVE MODELLING -PART2
 
 # LINEAR MODEL1
 mod1<-lm(medv ~ lstat , data = Boston)
@@ -95,3 +98,16 @@ points(lstat , fitted(mod6),col= 'red', pch=20)
 
 
 #writing a R function
+
+regplot<-function(x,y,...) { 
+  
+  plot(x,y,...)
+  #linear regression Model
+  mod<-lm(y~x)
+  #to fit regression line to the scatterplot
+  abline(mod,col='red')
+  
+}
+
+
+
