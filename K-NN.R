@@ -69,4 +69,11 @@ mean(model4==Direction[Year==2005])
 
 
 
+#MODEL-5, 
+
+model5<-knn(train_set,test_set ,Direction[Year<2005],k=300)
+table(Predicted=model5,True=Direction[Year==2005])
+#True positives and negetives and perfomance of the model
+mean(model5==Direction[Year==2005])  
+
 #300-NN gives accuracy of 61%(highest)
