@@ -56,6 +56,17 @@ table(Predicted=model3,True=Direction[Year==2005])
 #True positives and negetives and perfomance of the model
 mean(model3==Direction[Year==2005])   
 
-#NOTE-100 NN gives accuracy of 55%
+#NOTE-100 NN gives accuracy of 54%
+
+
+
+#Model4- 200-NN
+model4<-knn(train_set,test_set ,Direction[Year<2005],k=200)
+table(Predicted=model4,True=Direction[Year==2005])
+#True positives and negetives and perfomance of the model
+mean(model4==Direction[Year==2005])  
 #200-NN set gives accuracy of 57%
+
+
+
 #300-NN gives accuracy of 61%(highest)
