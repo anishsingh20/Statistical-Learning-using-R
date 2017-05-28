@@ -50,3 +50,35 @@ for(d in degree)
 plot(x = degree , y = cv.error,type='b' ,title="Cross validation error for different degrees",xlab = "Degree",ylab = "Cross validation error")
 #Hence Quadratic Model did a very good job with less CV error 
 # along with degree 5
+
+  
+
+#10 fold cross validation
+cv.error10 = rep(0,5)
+for(d in degree)
+{
+  mod<-glm(mpg~poly(horsepower,d),data = Auto)
+  cv.error10[d] = cv.glm(Auto, mod, K=10)$delta[1]
+}
+
+plot(degree, cv.error10,type='b',col='red',xlab="Degree of polynomial",ylab ="10 fold CV error")
+#Hence we can see that Model with quadratic degree is the best one with least
+# Cv error , hence we will choose the Model 2 with degree 2
+#10 fold is usually more computationally simpler than LOOCV and also 10 considers
+# Bias-Variance tradeoffs
+
+
+
+mod2<-glm(mpg ~ poly(horsepower,2), data = Auto)
+#5-fold CV
+cv.glm(Auto,mod2,K=5)$delta
+
+cv.error5 = rep(0,5)
+for(d in degree) 
+{
+  mod<-glm(mpg ~ poly(horsepower,d),data =Auto)
+  cv.error5[d] = cv.glm(Auto , mod , K=5)$delta[1]
+}
+
+lines(degree, cv.error5 , col = 'blue',type= 'b')
+legend(2000, 9.5, c( "5-fold CV"),lty=c(1),lwd=c(2.5),col=c("blue"))
