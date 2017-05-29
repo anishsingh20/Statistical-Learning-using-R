@@ -61,7 +61,7 @@ for(d in degree)
   cv.error10[d] = cv.glm(Auto, mod, K=10)$delta[1]
 }
 
-plot(degree, cv.error10,type='b',col='red',xlab="Degree of polynomial",ylab ="10 fold CV error")
+plot(degree, cv.error10,type='b',col='red',xlab="Degree of polynomial",ylab ="10 fold CV error vs 5 fold")
 #Hence we can see that Model with quadratic degree is the best one with least
 # Cv error , hence we will choose the Model 2 with degree 2
 #10 fold is usually more computationally simpler than LOOCV and also 10 considers
