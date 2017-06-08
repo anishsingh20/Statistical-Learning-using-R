@@ -54,5 +54,5 @@ boot.conf
 
 
 
-# hence this is how we can use Bootstrapping to compute the Standard errors, 
+#hence this is how we can use Bootstrapping to compute the Standard errors, 
 #confidence intervals of various statistics and learning techniques
