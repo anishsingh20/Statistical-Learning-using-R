@@ -192,6 +192,61 @@ legend('topright',pch=19,c("MSE on Test Set ","MSE on Training Data"),col=c("bla
 
 
 
+#function to compute Error and predictions on test set
+predict.regsubset<-function(object,newdata,id,...)
+{
+  form=as.formula(object$call[[2]])
+  mat<-model.matrix(form,newdata)#Test Set
+  coefi<-coef(object,id=id)# Model coefficients
+  #last line are the predicted values
+  mat[,names(coefi)]%*%coefi
+}
+
+
+#CROSS VALIDATION FOR MODEL SELECTION
+#10 fold CV
+set.seed(10)
+#dividing the data set in 10 equal parts
+#random rows for each fold , each fold has same size
+folds=sample(rep(1:10,length = nrow(Hitters)))
+#repeat 1 to 10 ,263 times(size of data set)
+folds
+table(folds)
+
+#10 rows of each Model with 19 variables(columns)
+cv.errors<-matrix(NA,10,19)
+
+for(k in 1:10)
+{
+#fitting the Models on each k-1 folds
+  best.fit<-regsubsets(Salary ~ . , data = Hitters[folds!=k,],
+                       nvmax=19,method='forward')
+#predictions on left out Kth fold -Validation Set
+for(i in 1:19)
+{
+  pred = predict.regsubset(best.fit,Hitters[folds==k,],
+                           id=i) #predictions on k-th fold
+  cv.errors[k,i]=mean((Hitters$Salary[folds==k]-pred)^2)
+  #cross validation error for each K fold Model and  its ith submodel
+}
+
+}
+
+head(cv.errors)
+pred#a list of Predicted Salaries for each player for kth fold
+#10 Models in total with 19 SubModels for each Model
+
+#Cross validation Error for each 20  Sub Models
+rmse.cv=sqrt(apply(cv.errors,2,mean))
+rmse.cv
+plot(rmse.cv,pch=19,type='b',ylim=c(320,400),ylab="Root Mean squared Cross validation Error",
+     xlab="Number of Predictors")
+title("CV error for each Submodel")
+
+#It tends to prefer Model with 10 and 11 predictors as CV error is least for them
+
+
+
 
 
 
