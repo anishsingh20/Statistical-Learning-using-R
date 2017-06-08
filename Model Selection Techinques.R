@@ -63,3 +63,32 @@ coef(Mod2,id = 10)
 
 
 
+#FORWARD STEPWISE SELECTION
+forwmod<-regsubsets(Salary ~ . , data  = Hitters , method = 'forward',nvmax = 19 )
+
+sumfor<-summary(forwmod)
+#now the models are prefectly Nested-i.e the new Model is evaluated by adding 1 more variable
+#to the previous Model with K predictors upto model with all p predictors and the search space
+# is p^2 models.
+sumfor$cp #cp statistic- the lesser the better
+sumfor$bic #BIC statistic-the lesser the better-BIC penalizes larger Models with more predictors  
+
+sumfor$adjr2
+which.max(sumfor$adjr2) #model with 11 predictors has highest Adjst R-squared
+
+
+plot(sumfor$adjr2,xlab="Number of Variables" , ylab =  " Adjusted R-squared")
+points(11,sumfor$adjr2[11],pch=20,col='blue')
+#Adjst R-squred is highest for Model with 11 predictors
+title("Forward Stepwise Selection")
+plot(sumfor$bic,xlab='Number of Predictors '  , ylab = "BIC statistic")
+points(6,sumfor$bic[6],pch=20,col='red')
+#BIC is least for a model with 6 predictors 
+
+
+
+
+
+
+
+
