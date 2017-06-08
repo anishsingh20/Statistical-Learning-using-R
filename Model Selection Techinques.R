@@ -20,6 +20,7 @@ attach(Hitters)
 #Amongst those Models the Best one is selected with least AIC or BIC values
 #or highest adjusted R-squared value or least CV error.
 install.packages("leaps")
+#Package to do Subset Selection
 require(leaps)
 ?leaps
 
@@ -135,6 +136,64 @@ plot(backsum$adjr2,type='b',col='green',pch=19,xlab="Number of Variables",
      ylab=('Adjusted R-squared'))
 
 coef(backmod,id=8)
+
+
+
+
+
+#Model Selection using a Validation Set
+
+#Making training and test Data set
+
+dim(Hitters)
+
+set.seed(1000)#for reproducable results
+
+#Randomly making Training rows for Training data set
+#180 random numbers for 1 to 263
+trainrow<-sample(seq(263),180,replace = FALSE)
+head(trainrow)
+#now training using Forward Stepwise selection
+forw<-regsubsets(Salary ~ . ,data=Hitters[trainrow,] , 
+                 method = "forward",nvmax =19)
+
+
+#Validation Error vector
+#AS there are 19 Models with 1 to 19 predictors in them
+val.error<-rep(NA,19)
+?model.matrix() #model.matrix creates a design (or model) matrix
+
+#Test data Set- exculding the observations used by Train data
+x.test<-model.matrix(Salary ~ ., data = Hitters[-trainrow,])
+
+for(i in 1:19) {
+  coefi = coef(forw , id = i)
+  pred = x.test[,names(coefi)]%*%coefi
+  #Coef value for for all 19 variables
+  val.error[i] = mean((Hitters$Salary[-trainrow]-pred )^2)
+  #Mean sqrd Error on Test set for all 19 Models
+  
+}
+
+val.error
+#Plotting the RMStest error for Each Model
+plot(sqrt(val.error),pch=19,ylim=c(280,400),type='b',ylab="RMS error",xlab="No of Predictors")
+#also adding the Mean RSS omn training data
+title("MSE on TEST SET vs MSE on TRAIN SET")
+points(sqrt(forw$rss[-1]/180),type='b',pch=19,col='blue')
+legend('topright',pch=19,c("MSE on Test Set ","MSE on Training Data"),col=c("black","blue"))
+#AS expected the MSE in Training data decrease as the no of predictors
+#in the Model Increases due to forward stepwise which adds 1 more Best 
+#predictor to the Next model, but due to this the variance of 
+#the Models increases with more predictors and it starts
+#to Overfit the training data and performs poorly on Test Set.
+#Also in the Plot we can see the Train error is least for Models with
+# highest TEST ERROR , this is OVERFITTING due to high Model variances
+
+
+
+
+
 
 
 
