@@ -81,4 +81,5 @@ for(d in degree)
 }
 
 lines(degree, cv.error5 , col = 'blue',type= 'b')
-legend(2000, 9.5, c( "5-fold CV"),lty=c(1),lwd=c(2.5),col=c("blue"))
+#adding legends
+legend("topright", c("5-fold CV","10-fold CV"),col=c("blue","red"),pch=19)

@@ -99,19 +99,40 @@ backsum
 which.min(backsum$rss)
 #RSS least for model with all predictors in it i.e 19 , as expected
 #as we add more and more variables in the Model RSS value decreases but we cannot select
-#that model because it is certainly Overfitting and has high variance
+#that model because it is certainly Overfitting on training data and has very high variance
 
 which.max(backsum$adjr2)
 which.min(backsum$cp)
 which.min(backsum$bic)#BIC penelizes larger Models
 
 plot(sumfor$adjr2,xlab="Number of Variables" , ylab =  " Adjusted R-squared")
-points(11,sumfor$adjr2[11],pch=20,col='blue')
+points(11,sumfor$adjr2[11],pch=20,col='green')
 #Adjst R-squred is highest for Model with 11 predictors
 title("Backward Stepwise Selection")
 plot(sumfor$bic,xlab='Number of Predictors '  , ylab = "BIC statistic")
-points(8,sumfor$bic[8],pch=20,col='red')
+points(8,sumfor$bic[8],pch=20,col='yellow')
 #BIC is least for a model with 8 predictors 
+
+#Mean squared error on Training data reduces as  model's complexity increases
+# as expected 
+#sometimes we have to clear the memory to make things work
+#becasue R first loads everything in RAM then executes it
+
+par(mfrow=c(2,2))
+
+#PLOT OF COMPARISON OF VARIOUS STATISTICS TO SELECT THE BEST MODEL AND ALSO SHOWING 
+# HOW MSE on TRAINING DATA DECREASES due to INCREASE IN MODEL COMPLEXITY AND VARIANCE  
+
+plot(backsum$rss/nrow(Hitters),type='b',pch=19,xlab="Number of Variables",
+     ylab = "Mean Squared Error on Training Data")
+title("Overfitting Cases and increase in Model Variance as no of Predictors Increases")
+plot(backsum$bic,type='b',pch=19,col="blue",xlab="Number of Variables",
+     ylab="BIC value")
+plot(backsum$rsq,type="b",pch=19,col='red',xlab="Number of Variables",
+     ylab="R-squared on Training data")
+
+plot(backsum$adjr2,type='b',col='green',pch=19,xlab="Number of Variables",
+     ylab=('Adjusted R-squared'))
 
 coef(backmod,id=8)
 
