@@ -90,5 +90,30 @@ points(6,sumfor$bic[6],pch=20,col='red')
 
 
 
+#BACKWARD STEPWISE SELECTION
+backmod<-regsubsets(Salary ~ . , data  = Hitters , method = 'back', nvmax = 19 )
+backsum<-summary(backmod)
+backsum
+
+
+which.min(backsum$rss)
+#RSS least for model with all predictors in it i.e 19 , as expected
+#as we add more and more variables in the Model RSS value decreases but we cannot select
+#that model because it is certainly Overfitting and has high variance
+
+which.max(backsum$adjr2)
+which.min(backsum$cp)
+which.min(backsum$bic)#BIC penelizes larger Models
+
+plot(sumfor$adjr2,xlab="Number of Variables" , ylab =  " Adjusted R-squared")
+points(11,sumfor$adjr2[11],pch=20,col='blue')
+#Adjst R-squred is highest for Model with 11 predictors
+title("Backward Stepwise Selection")
+plot(sumfor$bic,xlab='Number of Predictors '  , ylab = "BIC statistic")
+points(8,sumfor$bic[8],pch=20,col='red')
+#BIC is least for a model with 8 predictors 
+
+coef(backmod,id=8)
+
 
 
