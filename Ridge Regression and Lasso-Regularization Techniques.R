@@ -62,3 +62,33 @@ plot(lasso.cv)
 coef(lasso.cv)#best Model selected is with 5 predictors- within 1 Standard error
 # of the minimum 
 
+
+
+
+#Using a Validation Set
+
+#Train on training Set
+lasso.val<-glmnet(x[trainrow,],y[trainrow])
+plot(lasso.val,xvar = 'dev',label = T)
+pred=predict(lasso.val,x[-trainrow,])#Predictions on Test set
+pred
+dim(pred)
+rmse = sqrt(apply((y[-trainrow]- pred)^2 ,2 ,mean))#Root mean squared error
+#on Validation Set
+
+plot(log(lasso.val$lambda),rmse,type='b',pch=19,col='red',
+     ylab="Root Mean Square Error on Validation Set",xlab=("Log of Lambda(Tuning Parameter)"))
+title("Lasso Implementation")
+#On the Left side of the plot, when lambda is small - it represents Overfitting,high variance
+#on the Right Hand side- when lambda is very large it repssents Underfitting,high Bias
+#Somewhere in the middle of the plot the Bias Variance is balanced
+
+#Extracting the Best value of Lambda which gives least Error on Validation Set
+lam.best<-lasso.val$lambda[order(rmse)[1]]
+lam.best
+#order in ascending order of rmse and we want the 1st of that list
+lam.best
+
+#outputs a sparse matrix format
+coef(lasso.val,s=lam.best)
+#It outputs a Model with 15 predictors which has least RMSE error on Validation Set
