@@ -22,6 +22,9 @@ summary(ridge)
 ridge
 #Plotting lambda(Tuning Parameter) vs Cofficient values of variables.
 plot(ridge,xvar = "lambda",label = TRUE)
+plot(ridge,xvar = "dev",label = TRUE)
+#Plots the fraction of deviance Explained-similr to R-squared value
+
 #In Shrinkage techniques we will Shrink the Cofficient values towards 0 as
 #value of lambda increases to reduce the Error value
 
@@ -35,4 +38,27 @@ plot(cv.ridge)#all 20 variables in the Model-19 predictors + 1 intercept for eac
 #With increase in Lambda the variance of Model decreases at cost of High Bias
 
 
+
+#LASSO-Another shrinkage Technique which Does Variable Selection as well as
+#shrinks the cofficient value towards 0 and sometimes excatly 0 which 
+#reduces the Complexity of the Models , The best part is that it selects
+#a subset of variables for the Model , unlike RIDGE REGRESSION
+#It prefers Sparse Models
+
+#by default alpha=  0
+lasso<-glmnet(x,y)
+lasso
+plot(lasso,xvar ="lambda",label = T)
+plot(lasso,xvar = "dev",label = T)
+#At the end there is quiet a big jump in coef values, so it might be 
+#overfitting
+
+#again using Cross validation
+lasso.cv<-cv.glmnet(x,y)
+plot(lasso.cv)
+#We get least errors at about 14 predictors and withing 1 SE is Model with 
+#around 5 predictors
+#Finding the coeffienct values for best Model
+coef(lasso.cv)#best Model selected is with 5 predictors- within 1 Standard error
+# of the minimum 
 
