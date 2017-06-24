@@ -1,10 +1,10 @@
 ---
 title: "Non Linear Models"
 output:
-  html_document: default
+  word_document: default
   html_notebook: default
   pdf_document: default
-  word_document: default
+  html_document: default
 ---
 
 
