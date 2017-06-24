@@ -1,0 +1,45 @@
+---
+title: "Non Linear Models"
+output:
+  html_document: default
+  html_notebook: default
+  pdf_document: default
+---
+
+
+
+#### MODELLING NON LINEARITIES in DATA using various Non linear functions-
+#### The most basic idea behind adding Non linear properties in the Model is by transforming the  data or the variables,alomst every trick transforms the variables to Model Non linearitites.
+#### Say Kernel Smoothing techniques  , Splines or Step functions etc.
+
+
+
+```{r, message=FALSE,warning=FALSE}
+#Package containing the Dataset
+require(ISLR)
+attach(Wage)#Dataset
+
+```
+
+---
+
+
+## Polynomial Regression
+
+First we will use polynomials ,  and focus on only one predictor age.
+
+
+```{r,message=FALSE,warning=FALSE}
+
+mod<-lm(wage~poly(age,4),data =Wage)
+#Summary of the Model
+summary(mod)
+
+
+```
+
+It looks like the *__Quadatric__* coefficient is not Sifgificant.So we can stop tell 3.
+
+
+### Plotting the Model
+
