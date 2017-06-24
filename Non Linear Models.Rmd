@@ -1,8 +1,8 @@
 ---
 title: "Non Linear Models"
 output:
-  html_document: default
   html_notebook: default
+  html_document: default
   pdf_document: default
 ---
 
@@ -41,5 +41,47 @@ summary(mod)
 It looks like the *__Quadatric__* coefficient is not Sifgificant.So we can stop tell 3.
 
 
-### Plotting the Model
+### Plotting the Model and Making Predictions-
+```{r fig.width=7, fig.height=6}
+#Range of age variable
+agelims<-range(age)
+#Generating Test Data
+age.grid<-seq(from=agelims[1], to = agelims[2])
+#Making Predctions on Test data
+pred<-predict(mod,newdata = list(age=age.grid),se=TRUE)
+#Standard Error Bands
+se.tab<-cbind(pred$fit+2*pred$se.fit,pred$fit -  2*pred$se.fit)
+plot(age,wage,col="darkgrey")
+#Plotting the age values vs Predicted Wage values for those Ages
+lines(age.grid,pred$fit,col="blue",lwd=2)
+#To plot the Error bands around the Regression Line
+matlines(x=age.grid,y=se.tab,lty =2,col="blue")
+ 
+
+```
+
+
+#### Other Methods to fit polynomials 
+
+This time we are going to wrap the polynimials inside the I() Identity function and
+now we are representing the polynomials on a different basis.
+
+```{r}
+#This time we will use different basis of polynomials
+fit2<-lm(wage ~ age + I(age^2) + I(age^3) + I(age^4),data = Wage)
+summary(fit2)
+
+plot(fitted(mod),fitted(fit2),xlab="First Polynomial Model",ylab="Polynomial Model wrapped inside Identity function", main="Fitted values of Both models are exactly same")
+
+
+
+
+
+```
+
+*__We can notice that the coefficients and the summary is different though we have used the same degree of polynomials and this is merely due to the different representations of the polynomils using Identity I() function.__*
+
+*Things we are interested in is the Fitted polynomial and we can notice that the 
+fitted values of both The model above and this Model has not changed.*
+
 
