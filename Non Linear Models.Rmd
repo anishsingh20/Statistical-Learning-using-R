@@ -49,7 +49,7 @@ agelims<-range(age)
 age.grid<-seq(from=agelims[1], to = agelims[2])
 #Making Predctions on Test data
 pred<-predict(mod,newdata = list(age=age.grid),se=TRUE)
-#Standard Error Bands
+#Standard Error Bands- within 2 Standard Deviations
 se.tab<-cbind(pred$fit+2*pred$se.fit,pred$fit -  2*pred$se.fit)
 plot(age,wage,col="darkgrey")
 #Plotting the age values vs Predicted Wage values for those Ages
@@ -85,3 +85,23 @@ plot(fitted(mod),fitted(fit2),xlab="First Polynomial Model",ylab="Polynomial Mod
 fitted values of both The model above and this Model has not changed.*
 
 
+
+----
+
+### Now we will use anova() to test different Models with different Predictors
+
+```{r}
+#Making Nested Models-i.e Each Next Model includes previous Model and is a special case for previous one
+mod1<-lm(wage ~ education , data = Wage)
+mod2<-lm(wage ~ education + age,data = Wage)
+mod3<-lm(wage ~ education + age + poly(age,2),data = Wage)
+mod4<-lm(wage ~ education + age + poly(age,3),data = Wage)
+#using anova() function
+anova(mod1,mod2,mod3,mod4)
+
+
+```
+
+Seeing the Above values,Model 4 which is the most Complex one is the most Insignificant Model as the p-values indicate.Though the RSS value of Model 4 is least,and this is a expected as it fitting data too *__hard(Overfitting)__*.
+
+Model2 and Model3 are the best ones and seem to balance the Bias-Variace Tradeoffs.
