@@ -98,6 +98,7 @@ mod3<-lm(wage ~ education + age + poly(age,2),data = Wage)
 mod4<-lm(wage ~ education + age + poly(age,3),data = Wage)
 #using anova() function
 anova(mod1,mod2,mod3,mod4)
+BIC(mod1,mod2,mod3,mod4)
 
 
 ```
@@ -105,3 +106,40 @@ anova(mod1,mod2,mod3,mod4)
 Seeing the Above values,Model 4 which is the most Complex one is the most Insignificant Model as the p-values indicate.Though the RSS value of Model 4 is least,and this is a expected as it fitting data too *__hard(Overfitting)__*.
 
 Model2 and Model3 are the best ones and seem to balance the Bias-Variace Tradeoffs.
+
+---
+
+
+### Polynomial Logistic Regression
+
+```{r}
+#Logistic Regression Model the Binary Response variable;
+logmod<-glm(I(wage > 250 ) ~ poly(age,3),data = Wage , family = "binomial")
+summary(logmod)
+#doing Predictions
+pred2<-predict(logmod,newdata = list(age=age.grid),se=TRUE)
+#Standard Error Bands
+#a Matrix with 3 columns
+#Confidence intervals
+se.band<-pred2$fit + cbind(fit=0,lower=-2*pred2$se.fit , upper = 2*pred2$se.fit )
+se.band[1:5,]
+
+
+```
+We have done computations on the Logit scale , to convert it to probabilities we will use LateX language which is used in tysetting Mathematical formulas-
+
+This is the formula to compute the probabilities
+$$p=\frac {e^\eta}{1 + e^\eta}.$$
+
+```{r}
+#comuting the 95% confidence interval for the Fitted Probabilities value
+prob.bands = exp(se.band)/ (1 + exp(se.band))
+matplot(age.grid,prob.bands,col="blue",lwd = c(2,2,2),lty=c(1,2,2),
+        type="l",ylim=c(0,.1),xlab="Age",ylab="Probability Values")
+
+#jitter() function to uniformly add random noise to properly see the densities
+points(jitter(age),I(wage > 250)/10 , pch="I",cex=0.5)
+
+
+```
+
