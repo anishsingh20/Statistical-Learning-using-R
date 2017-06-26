@@ -1,12 +1,11 @@
 ---
-title: "R Notebook"
+title: "Splines"
 output: html_notebook
 ---
 
 #Spilnes
 
-Splines are used to add __Non linearities__ to a Linear Model and it is a Flexible Technique than Polynomial Regression.Splines Fit the data very *__smoothly__* in most of the cases where
-polynomials would become wiggly and overfit the training data.
+Splines are used to add __Non linearities__ to a Linear Model and it is a Flexible Technique than Polynomial Regression.Splines Fit the data very *__smoothly__* in most of the cases where polynomials would become wiggly and overfit the training data.
 
 
 
@@ -28,14 +27,50 @@ What It does is that it transforms the Regression Equation by transforming the V
 
 The Regression Equation Becomes -
 
-$$y_i = \alpha + \beta_1.b_1(x_i)\ +  \beta_2.b_2(x_i)\ + \ .... \beta_{k+3}.b_{k+3}(x_i) \ + \epsilon_i   $$
+$$f(x) = y_i = \alpha + \beta_1.b_1(x_i)\ +  \beta_2.b_2(x_i)\ + \ .... \beta_{k+3}.b_{k+3}(x_i) \ + \epsilon_i   $$
 
-where $$\bf b_n(x_i)\ is \  The \  Basis \ Function$$.
+ $$\bf where \ \bf b_n(x_i)\ is \  The \  Basis \ Function$$.
+ 
+$$\text{The idea here is to transform the variables and add a linear combination of the variables using the Basis power function to the regression function f(x).} $$
 ```{r}
 #3 cutpoints at ages 25 ,50 ,60
 fit<-lm(wage ~ bs(age,knots = c(25,40,60)),data = Wage )
 summary(fit)
-
+#Plotting the Regression Line to the scatterplot   
+plot(age,wage,col="grey",xlab="Age",ylab="Wages")
+points(age.grid,predict(fit,newdata = list(age=age.grid)),col="darkgreen",lwd=2,type="l")
+#adding cutpoints
+abline(v=c(25,40,60),lty=2,col="darkgreen")
 
 ```
+The above Plot shows the smoothing and local effect of Cubic Splines , whereas Polynomias might become wiggly and the tail.*__The cubic splines have continious 1st Derivative and continious 2nd derivative.__*
+
+--------
+
+
+###Smoothing Splines 
+
+These are mathematically more challenging but they are more smoother and flexible as well.It does not require the selection of the number of Knots , but require selection of only a __Roughness Penalty__ which accounts for the wiggliness(fluctuations) and controls the roughness of the function and variance of the Model.
+
+$$ \text{Let the RSS(Residual Sum of Squares) be} \ { g(x_i) }$$
+$$ \ minimize \ { g \in RSS} :\ \sum\limits_{i=1}^n ( \ y_i \ - \ g(x_i) \ )^2 + \lambda \ \int g''(t)^2 dt , \quad  \lambda > 0$$
+$$ \text{ where },\ \lambda \int g''(t)^2 dt \  {is \ called \ the \ Roughness \ Penalty. }  $$
+
+$$ \textbf {The Roughness Penalty controls how wiggly g(x) is. The smaller the }  \lambda , \textbf{ the more wiggly and  fluctuating the function is. }$$  
+
+$$\textbf {As} \  \lambda ,\textbf {approcahes}\ \infty , \textbf {the function} \ g(x) \textbf  { becomes linear} . $$
+
+In smoothing Splines we have a __Knot__ at every unique value of $x_i$ .
+
+
+```{r}
+fit1<-smooth.spline(age,wage,df=16)
+plot(age,wage,col="grey",xlab="Age",ylab="Wages")
+points(age.grid,predict(fit,newdata = list(age=age.grid)),col="darkgreen",lwd=2,type="l")
+#adding cutpoints
+abline(v=c(25,40,60),lty=2,col="darkgreen")
+lines(fit1,col="red",lwd=2)
+
+```
+
 
