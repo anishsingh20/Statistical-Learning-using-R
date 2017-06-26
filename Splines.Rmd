@@ -1,12 +1,15 @@
 ---
 title: "Splines"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
+  pdf_document: default
 ---
 
-#Spilnes
+#What are Splines ?
 
-Splines are used to add __Non linearities__ to a Linear Model and it is a Flexible Technique than Polynomial Regression.Splines Fit the data very *__smoothly__* in most of the cases where polynomials would become wiggly and overfit the training data.
-
+Splines are used to add __Non linearities__ to a Linear Model and it is a Flexible Technique than Polynomial Regression.Splines Fit the data very *__smoothly__* in most of the cases where polynomials would become wiggly and overfit the training data.Polynomials 
+tends to get wiggly and fluctuating at the tails which sometimes __overfits__ the training data and doesn't *__generalizes well due to high variance at high degrees of polynomial__.*
 
 
 
@@ -17,6 +20,10 @@ require(splines)
 require(ISLR)
 attach(Wage)
 
+agelims<-range(age)
+#Generating Test Data
+age.grid<-seq(from=agelims[1], to = agelims[2])
+
 ```
 
 ---
@@ -25,7 +32,9 @@ attach(Wage)
 ### Fitting a Cubic Spline with 3 Knots(Cutpoints)
 What It does is that it transforms the Regression Equation by transforming the Variables with a truncated *__Basis__* Function- $$b(x)$$ ,with continious derivatives upto order 2.
 
-The Regression Equation Becomes -
+$$\textbf{The order of the continuity}= (d - 1) , \ where \ d \ is \ the \ number \ of \ degrees \ of \ polynomial$$
+
+$$\textbf {The Regression Equation Becomes}$$ -
 
 $$f(x) = y_i = \alpha + \beta_1.b_1(x_i)\ +  \beta_2.b_2(x_i)\ + \ .... \beta_{k+3}.b_{k+3}(x_i) \ + \epsilon_i   $$
 
@@ -70,7 +79,32 @@ points(age.grid,predict(fit,newdata = list(age=age.grid)),col="darkgreen",lwd=2,
 #adding cutpoints
 abline(v=c(25,40,60),lty=2,col="darkgreen")
 lines(fit1,col="red",lwd=2)
+legend("topright",c("Smoothing Spline with 16 df","Cubic Spline"),col=c("red","darkgreen"),lwd=2)
 
 ```
+
+---
+
+
+### Implementing Cross Validation to select value of $\lambda$  and Implement Smoothing Splines 
+
+
+```{r}
+fit2<-smooth.spline(age,wage,cv = TRUE)
+fit2
+#It selects $\lambda=6.794596$ it is a Heuristic and can take various values for how rough the function is
+
+plot(age,wage,col="grey")
+#Plotting Regression Line
+lines(fit2,lwd=2,col="purple")
+legend("topright",("Smoothing Splines with 6.78 df selected by CV"),col="purple",lwd=2)
+
+
+```
+
+####This Model is also very Smooth and Fits the data well 
+
+---
+
 
 
