@@ -11,7 +11,7 @@ http://rpubs.com/anish20/polynomialRegression
 
 ---
 
-### Second Document on Implementing Cubic Splines and Smoothing Splines how it is better from Polynomial Regression, to learn Non linear Functional Mappings from X(Predictors) to Y(Target) 
+### Second Document on step by step Implementation of Cubic Splines and Smoothing Splines in R and how they transform the variables by adding Truncated Basis functions b(X) and how it is better from Polynomial Regression, to learn Non linear Functional Mappings from X(Predictors) to Y(Target) 
 
 
 http://rpubs.com/anish20/Splines
