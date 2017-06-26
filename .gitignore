@@ -1,1 +1,4 @@
 .RData
+.Rhistory
+*.html
+
