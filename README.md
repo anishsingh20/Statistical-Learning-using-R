@@ -9,5 +9,12 @@ and their in depth interpretation.
 http://rpubs.com/anish20/polynomialRegression
 
 
+---
+
+### Second Document on Implementing Cubic Splines and Smoothing Splines how it is better from Polynomial Regression, to learn Non linear Functional Mappings from X(Predictors) to Y(Target) 
+
+
+http://rpubs.com/anish20/Splines
+
 
 
