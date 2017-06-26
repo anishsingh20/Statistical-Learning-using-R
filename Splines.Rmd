@@ -1,0 +1,41 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#Spilnes
+
+Splines are used to add __Non linearities__ to a Linear Model and it is a Flexible Technique than Polynomial Regression.Splines Fit the data very *__smoothly__* in most of the cases where
+polynomials would become wiggly and overfit the training data.
+
+
+
+
+```{r,message=FALSE,warning=FALSE}
+#loading the Splines Packages
+require(splines)
+#ISLR contains the Dataset
+require(ISLR)
+attach(Wage)
+
+```
+
+---
+
+
+### Fitting a Cubic Spline with 3 Knots(Cutpoints)
+What It does is that it transforms the Regression Equation by transforming the Variables with a truncated *__Basis__* Function- $$b(x)$$ ,with continious derivatives upto order 2.
+
+The Regression Equation Becomes -
+
+$$y_i = \alpha + \beta_1.b_1(x_i)\ +  \beta_2.b_2(x_i)\ + \ .... \beta_{k+3}.b_{k+3}(x_i) \ + \epsilon_i   $$
+
+where $$\bf b_n(x_i)\ is \  The \  Basis \ Function$$.
+```{r}
+#3 cutpoints at ages 25 ,50 ,60
+fit<-lm(wage ~ bs(age,knots = c(25,40,60)),data = Wage )
+summary(fit)
+
+
+```
+

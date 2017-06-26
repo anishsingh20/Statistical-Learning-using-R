@@ -1,0 +1,151 @@
+---
+title: "Non Linear Models"
+output:
+  word_document: default
+  html_notebook: default
+  pdf_document: default
+  html_document: default
+---
+
+
+
+#### MODELLING NON LINEARITIES in DATA using various Non linear functions-
+#### The most basic idea behind adding Non linear properties in the Model is by transforming the  data or the variables,alomst every trick transforms the variables to Model Non linearitites.
+#### Say Kernel Smoothing techniques  , Splines or Step functions etc.
+
+
+
+```{r, message=FALSE,warning=FALSE}
+#Package containing the Dataset
+require(ISLR)
+attach(Wage)#Dataset
+
+```
+
+---
+
+
+## Polynomial Regression
+
+First we will use polynomials ,  and focus on only one predictor age.
+
+
+```{r,message=FALSE,warning=FALSE}
+
+mod<-lm(wage~poly(age,4),data =Wage)
+#Summary of the Model
+summary(mod)
+
+
+```
+
+It looks like the *__Quadatric__* coefficient is not Sifgificant.So we can stop tell 3.
+
+
+### Plotting the Model and Making Predictions-
+```{r fig.width=7, fig.height=6}
+#Range of age variable
+agelims<-range(age)
+#Generating Test Data
+age.grid<-seq(from=agelims[1], to = agelims[2])
+#Making Predctions on Test data
+pred<-predict(mod,newdata = list(age=age.grid),se=TRUE)
+#Standard Error Bands- within 2 Standard Deviations
+se.tab<-cbind(pred$fit+2*pred$se.fit,pred$fit -  2*pred$se.fit)
+plot(age,wage,col="darkgrey")
+#Plotting the age values vs Predicted Wage values for those Ages
+lines(age.grid,pred$fit,col="blue",lwd=2)
+#To plot the Error bands around the Regression Line
+matlines(x=age.grid,y=se.tab,lty =2,col="blue")
+ 
+
+```
+
+
+#### Other Methods to fit polynomials 
+
+This time we are going to wrap the polynimials inside the I() Identity function and
+now we are representing the polynomials on a different basis.
+
+```{r}
+#This time we will use different basis of polynomials
+fit2<-lm(wage ~ age + I(age^2) + I(age^3) + I(age^4),data = Wage)
+summary(fit2)
+
+plot(fitted(mod),fitted(fit2),xlab="First Polynomial Model",ylab="Polynomial Model wrapped inside Identity function", main="Fitted values of Both models are exactly same")
+
+
+
+
+
+```
+
+*__We can notice that the coefficients and the summary is different though we have used the same degree of polynomials and this is merely due to the different representations of the polynomils using Identity I() function.__*
+
+*Things we are interested in is the Fitted polynomial and we can notice that the 
+fitted values of both The model above and this Model has not changed.*
+
+
+
+----
+
+### Now we will use anova() to test different Models with different Predictors
+
+```{r}
+#Making Nested Models-i.e Each Next Model includes previous Model and is a special case for previous one
+mod1<-lm(wage ~ education , data = Wage)
+mod2<-lm(wage ~ education + age,data = Wage)
+mod3<-lm(wage ~ education + age + poly(age,2),data = Wage)
+mod4<-lm(wage ~ education + age + poly(age,3),data = Wage)
+#using anova() function
+anova(mod1,mod2,mod3,mod4)
+BIC(mod1,mod2,mod3,mod4)
+
+
+```
+
+Seeing the Above values,Model 4 which is the most Complex one is the most Insignificant Model as the p-values indicate.Though the RSS value of Model 4 is least,and this is a expected as it fitting data too *__hard(Overfitting)__*.
+
+Model2 and Model3 are the best ones and seem to balance the Bias-Variace Tradeoffs.
+
+---
+
+
+### Polynomial Logistic Regression
+
+```{r}
+#Logistic Regression Model the Binary Response variable;
+logmod<-glm(I(wage > 250 ) ~ poly(age,3),data = Wage , family = "binomial")
+summary(logmod)
+#doing Predictions
+pred2<-predict(logmod,newdata = list(age=age.grid),se=TRUE)
+#Standard Error Bands
+#a Matrix with 3 columns
+#Confidence intervals
+se.band<-pred2$fit + cbind(fit=0,lower=-2*pred2$se.fit , upper = 2*pred2$se.fit )
+se.band[1:5,]
+
+
+```
+We have done computations on the Logit scale , to convert it to probabilities we will use LateX language which is used in tysetting Mathematical formulas-
+
+This is the formula to compute the probabilities
+$$p=\frac {e^\eta}{1 + e^\eta}.$$
+
+
+```{r}
+#comuting the 95% confidence interval for the Fitted Probabilities value
+prob.bands = exp(se.band)/ (1 + exp(se.band))
+matplot(age.grid,prob.bands,col="blue",lwd = c(2,2,2),lty=c(1,2,2),
+        type="l",ylim=c(0,.1),xlab="Age",ylab="Probability Values")
+
+#jitter() function to uniformly add random noise to properly see the densities
+points(jitter(age),I(wage > 250)/10 , pch="I",cex=0.5)
+
+
+```
+
+The *__blue dotted lines__* represent the 95% Confidence Interval of the fitted Probabilities.
+
+The black dots are the actual Probability values for Binary Response Wage, i.e
+if wage > 250 is true then 1(TRUE) ,otherwise 0(FALSE).
