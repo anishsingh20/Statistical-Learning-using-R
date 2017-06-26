@@ -1,5 +1,4 @@
 .RData
 .Rhistory
 *.html
-*.Rmd
 rsconnect/*
