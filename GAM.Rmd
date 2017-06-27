@@ -6,10 +6,11 @@ output: html_document
 ---
 
 
+
 $\text{This article is going to talk about Generalized Additive Models and their implementation in R.}$
 
 This is also a famous and very flexible technique of fitting and Modelling Non Linear Functions which are more flexible and fits data well.
-In this technique we simply add __Non linear Functions__ on different variable to the Regression equation. 
+In this technique we simply add __Non linear Functions__ on different variables to the Regression equation. 
 $\text{That Non linear function can be anything - Cubic Spline  , natural Spline ,Smoothing Splines and even polynomial function}$
 
 
@@ -18,13 +19,18 @@ $$f(x) = y_i = \alpha \ +  \ f_1(x_1) \ + f_2(x_2) + \ .... + \ f_p(x_p) \ + \ep
 $$\text{where} \ f_p(x_p) \ \text {is a Non Linear function on} \  x_p \ variables.$$
 
 
+Requiring the __'gam'__ package which helps in fitting *__Generalized Additive Models__*. 
 
 
 ```{r,message=FALSE,warning=FALSE , message=FALSE, warning=FALSE}
 #requiring the Package 
 require(gam)
+
+#ISLR package contains the 'Wage' Dataset
 require(ISLR)
-attach(Wage)
+attach(Wage) #Mid-Atlantic Wage Data
+
+?Wage # To search more on the dataset
 
 gam1<-gam(wage~s(age,df=6)+s(year,df=6)+education ,data = Wage)
 #in the above function s() is the shorthand for fitting smoothing splines in gam() function
@@ -101,9 +107,18 @@ plot.gam(lm1,se=T)
 ```
 
 
-####So by using the lm() function too we can get a Genaralized Additive Model. 
+####So by using the lm() function too we can fit a Genaralized Additive Model. 
 
 
-####Hence GAMs are a very nice technique and method to Model Non linearities and Learn complex function other than just Linear functions.And the most basic idea behind learning Non Linearities is to transform the Data and the variables which can capture and Learn make sense of something more complicated than just a linear relationship.  
+
+---
+
+
+## Conclusion
+
+
+####Hence GAMs are a very nice technique and method to Model Non linearities and Learn complex function other than just Linear functions.They are easily interpretable too.
+
+####And the most basic idea behind learning Non Linearities is to transform the Data and the variables which can capture and Learn and make sense of something more complicated than just a linear relationship.  
 
 $$\text {Because the truth is not always "Linear"}$$
