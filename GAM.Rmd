@@ -36,6 +36,8 @@ plot(gam1,se = TRUE)
 ```
 In the above Plots the Y-axis contains the Non Linear functions and x-axis contains the Predictors used in the Model and the dashed lines Represent the __Standard Error bands__.The Whole Model is *__Additive__* in nature.
 
+$$\textbf {The Curvy plots shows that the functions are Non linear in nature}$$
+
 
 ---
 
@@ -50,7 +52,36 @@ plot(gam2,se=T)
 
 
 
+
 ```
 
 ####So we are plotting the logit of Probabilities of each variable as a saperate function but on the whole additive in nature.
+
+
+---
+
+###Now we can also check if we need Non linear Terms for Year variable or not?
+
+```{r}
+#fitting the Additive Regression Model which is linear in Year
+gam3<-gam(I(wage >250) ~ s(age,df=4)+ year + education , data =Wage, family = binomial)
+plot(gam3)
+
+#anova() function to test the goodness of fit and choose the best Model
+#Using Chi-squared Non parametric Test due to Classification Problem and categorial Target
+anova(gam2,gam3,test = "Chisq")
+
+
+
+```
+$$\text {The plot for the Year is a straight Line i.e it is Linear function in Year.}$$
+
+
+As the above Test indicates that Model with __Non linear terms for Year__ is not Significant.So we can neglect that Model.
+
+
+
+
+
+
 
