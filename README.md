@@ -16,5 +16,11 @@ http://rpubs.com/anish20/polynomialRegression
 
 http://rpubs.com/anish20/Splines
 
+----
+
+
+### Third Document on implementing Generalized Additive Models in R and their overview
+
+http://rpubs.com/anish20/AdditiveModelsinR
 
 
