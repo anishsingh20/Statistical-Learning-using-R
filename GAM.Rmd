@@ -34,7 +34,7 @@ plot(gam1,se = TRUE)
 
 
 ```
-In the above Plots the Y-axis contains the Non Linear functions and x-axis contains the Predictors used in the Model.The Whole Model is *__Additive__* in nature.
+In the above Plots the Y-axis contains the Non Linear functions and x-axis contains the Predictors used in the Model and the dashed lines Represent the __Standard Error bands__.The Whole Model is *__Additive__* in nature.
 
 
 ---
@@ -46,8 +46,11 @@ In the above Plots the Y-axis contains the Non Linear functions and x-axis conta
 #logistic Regression Model
 gam2<-gam(I(wage >250) ~ s(age,df=4) + s(year,df=4) +education , data=Wage,family=binomial)
 
+plot(gam2,se=T)
+
 
 
 ```
 
+####So we are plotting the logit of Probabilities of each variable as a saperate function but on the whole additive in nature.
 
