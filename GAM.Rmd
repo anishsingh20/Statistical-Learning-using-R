@@ -1,0 +1,16 @@
+---
+title: "GeneralizedAdditiveModels"
+author: "Anish Singh Walia"
+date: "June 27, 2017"
+output: html_document
+---
+
+# Generalized Additive Models
+
+
+This is also a famous and very flexible technique of fitting and Modelling Non Linear Functions which are more flexible and fits data well.
+In this technique we simply add __Non linear Functions__ on different variable to the Regression equation.
+
+$$f(x) = y_i = \alpha \ +  \ f_1(x_1) \ + f_2(x_2) + \ .... + \ f_p(x_p)  $$
+
+$$\text{where} \ f_p(x_p) \ \text {is a Non Linear function on} \  x_p \ variables.$$ 

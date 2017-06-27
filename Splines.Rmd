@@ -102,7 +102,7 @@ legend("topright",("Smoothing Splines with 6.78 df selected by CV"),col="purple"
 
 ```
 
-####This Model is also very Smooth and Fits the data well 
+####This Model is also very Smooth and Fits the data well. 
 
 ---
 
