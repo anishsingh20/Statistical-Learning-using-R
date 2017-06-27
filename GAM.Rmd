@@ -1,17 +1,19 @@
 ---
-title: "GeneralizedAdditiveModels"
+title: "Generalized Additive Models"
 author: "Anish Singh Walia"
 date: "June 27, 2017"
 output: html_document
 ---
 
-# Generalized  Additive  Models
 
+$\text{This article is going to talk about Generalized Additive Models and their implementation in R.}$
 
 This is also a famous and very flexible technique of fitting and Modelling Non Linear Functions which are more flexible and fits data well.
-In this technique we simply add __Non linear Functions__ on different variable to the Regression equation.
+In this technique we simply add __Non linear Functions__ on different variable to the Regression equation. 
+$\text{That Non linear function can be anything - Cubic Spline  , natural Spline ,Smoothing Splines and even polynomial function}$
 
-$$f(x) = y_i = \alpha \ +  \ f_1(x_1) \ + f_2(x_2) + \ .... + \ f_p(x_p)  $$
+
+$$f(x) = y_i = \alpha \ +  \ f_1(x_1) \ + f_2(x_2) + \ .... + \ f_p(x_p) \ + \epsilon_i $$
 
 $$\text{where} \ f_p(x_p) \ \text {is a Non Linear function on} \  x_p \ variables.$$
 
@@ -83,5 +85,25 @@ As the above Test indicates that Model with __Non linear terms for Year__ is not
 
 
 
+###Now we can also fit a Additive Model using lm() function
 
 
+```{r}
+lm1<-lm(wage ~ ns(age,df=4) + ns(year,df=4)+ education , data  = Wage)
+#ns() is function used to fit a Natural Spline
+lm1
+
+
+#Now plotting the Model
+
+plot.gam(lm1,se=T)
+#Hence the Results are same
+```
+
+
+####So by using the lm() function too we can get a Genaralized Additive Model. 
+
+
+####Hence GAMs are a very nice technique and method to Model Non linearities and Learn complex function other than just Linear functions.And the most basic idea behind learning Non Linearities is to transform the Data and the variables which can capture and Learn make sense of something more complicated than just a linear relationship.  
+
+$$\text {Because the truth is not always "Linear"}$$
