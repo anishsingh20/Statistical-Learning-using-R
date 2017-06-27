@@ -5,7 +5,7 @@ date: "June 27, 2017"
 output: html_document
 ---
 
-# Generalized Additive Models
+# Generalized  Additive  Models
 
 
 This is also a famous and very flexible technique of fitting and Modelling Non Linear Functions which are more flexible and fits data well.
@@ -13,4 +13,41 @@ In this technique we simply add __Non linear Functions__ on different variable t
 
 $$f(x) = y_i = \alpha \ +  \ f_1(x_1) \ + f_2(x_2) + \ .... + \ f_p(x_p)  $$
 
-$$\text{where} \ f_p(x_p) \ \text {is a Non Linear function on} \  x_p \ variables.$$ 
+$$\text{where} \ f_p(x_p) \ \text {is a Non Linear function on} \  x_p \ variables.$$
+
+
+
+
+```{r,message=FALSE,warning=FALSE , message=FALSE, warning=FALSE}
+#requiring the Package 
+require(gam)
+require(ISLR)
+attach(Wage)
+
+gam1<-gam(wage~s(age,df=6)+s(year,df=6)+education ,data = Wage)
+#in the above function s() is the shorthand for fitting smoothing splines in gam() function
+summary(gam1)
+#Plotting the Model
+par(mfrow=c(1,3))
+plot(gam1,se = TRUE)
+
+
+
+```
+In the above Plots the Y-axis contains the Non Linear functions and x-axis contains the Predictors used in the Model.The Whole Model is *__Additive__* in nature.
+
+
+---
+
+
+### We can also fit a Logistic Regression Model using gam()
+
+```{r}
+#logistic Regression Model
+gam2<-gam(I(wage >250) ~ s(age,df=4) + s(year,df=4) +education , data=Wage,family=binomial)
+
+
+
+```
+
+
