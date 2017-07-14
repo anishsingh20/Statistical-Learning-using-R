@@ -19,6 +19,7 @@ It will include implementation of Decision Trees ,  Random Forests and other Tre
 #### Loading the required Packages
 
 ```{r,warning=FALSE,message=FALSE}
+
 require(ISLR) #package containing data
 require(ggplot2)
 require(tree)
@@ -70,8 +71,7 @@ Carseats<-data.frame(Carseats,HighSales)
 ## Fitting a Binary Classification Tree
 
 
-
-Now we are going to fit a __Tree__ to the Carseats Data to predict if we are going to have High Sales or not.
+Now we are going to fit a __Tree__ to the Carseats Data to predict if we are going to have High Sales or not.The __tree()__ function uses a *__Top-down Greedy__* approch to fit a Tree which is also known as *__Recursive Binary Splitting__*.It is Greedy because it dosen't finds the best split amongst all possible splits,but only the best splits at the immediate place its looking i.e the best Split at that particular step.
 
 ```{r}
 #We will use the tree() function to fit a Desicion Tree
@@ -89,5 +89,21 @@ summary(CarTree)
 
 ```
 
+The summary of the Model consists of the imporatant variables used for splitting the data which minimizes the deviance(Error) Rate and another Splitting criterion used is __Gini Indes__, which is also called *Purity Index*.
 
 
+
+-------
+
+
+#Plotting the Decision Tree
+
+
+```{r}
+plot(CarTree)
+#Adding Predictors as text to plot
+text(CarTree ,pretty = 1 )
+
+```
+
+This tree is quiet Complicated and hard to understand due to lots of Splits and lots of variables included in the predictor space.The leaf nodes consists of the Response value i.e __Yes / No __.
