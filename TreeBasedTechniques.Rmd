@@ -1,6 +1,8 @@
 ---
 title: "Tree Based Methods in R"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 
@@ -82,6 +84,7 @@ CarTree<-tree(HighSales ~ . -Sales , data = Carseats,split = c("deviance","gini"
 #split argument split	to specify the splitting criterion to use.
 
 CarTree #Outputs a Tree with various Splits at different Variables and Response at Terminals Nodes
+#The numeric values within the braces are the Proportions of Yes and No for each split.
 
 #Summary of the Decision Tree
 summary(CarTree)
@@ -107,3 +110,5 @@ text(CarTree ,pretty = 1 )
 ```
 
 This tree is quiet Complicated and hard to understand due to lots of Splits and lots of variables included in the predictor space.The leaf nodes consists of the Response value i.e __Yes / No __.
+
+
