@@ -69,6 +69,25 @@ Carseats<-data.frame(Carseats,HighSales)
 
 ## Fitting a Decision Tree
 
+
+
 Now we are going to fit a __Tree__ to the Carseats Data to predict if we are going to have High Sales or not.
+
+```{r}
+#We will use the tree() function to fit a Desicion Tree
+?tree
+
+#Excluding the Sales atrribute
+CarTree<-tree(HighSales ~ . -Sales , data = Carseats,split = c("deviance","gini"))
+#split argument split	to specify the splitting criterion to use.
+
+CarTree #Outputs a Tree with various Splits at different Variables and Response at Terminals Nodes
+
+#Summary of the Decision Tree
+summary(CarTree)
+
+
+```
+
 
 
