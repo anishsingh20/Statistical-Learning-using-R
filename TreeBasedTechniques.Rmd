@@ -6,3 +6,37 @@ output: html_notebook
 
 
 
+### This is a article on how to implement Tree based Techniques in R to do Predictive Modelling
+ 
+It will include implementation of Decision Trees ,  Random Forests and other Tree based variants.
+
+
+
+-----------
+
+
+
+#### Loading the required Packages
+
+```{r,warning=FALSE,message=FALSE}
+require(ISLR) #package containing data
+require(ggplot2)
+require(tree)
+
+#Using the Carseats data set 
+
+attach(Carseats)
+?Carseats
+
+
+```
+
+
+Carseats is a simulated data set containing sales of child car seats at 400 different stores.
+
+
+```{r}
+
+```
+
+
