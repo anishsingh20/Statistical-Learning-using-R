@@ -159,6 +159,14 @@ The __Diagonals__ are the correctly classified Test Examples , whereas the __off
 
 The above tree was grown to Full length and might have lots of variables in it which might be degrading the Perfomance.We will now use 10 fold __Cross Validation__ to *Prune* the Tree.
 
+
+------
+
+
+## Pruning The tree using Cross Validation
+
+
+
 ```{r}
 #10 fold CV
 #Performing Cost Complexity Pruning
