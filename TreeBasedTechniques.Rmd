@@ -48,5 +48,27 @@ As the histogram suggests - It is Normally distributed
 Highest frequency of around 8000 Unit Sales
 
 
+```{r}
+
+#Making a Factor variable from Sales
+
+HighSales<-ifelse(Sales <= 8,"No","Yes")
+head(HighSales)
+
+#Making a Data frame
+Carseats<-data.frame(Carseats,HighSales)
+
+
+```
+
+
+----------
+
+
+
+
+## Fitting a Decision Tree
+
+Now we are going to fit a __Tree__ to the Carseats Data to predict if we are going to have High Sales or not.
 
 
