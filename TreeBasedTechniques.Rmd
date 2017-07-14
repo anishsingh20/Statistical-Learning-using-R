@@ -67,7 +67,7 @@ Carseats<-data.frame(Carseats,HighSales)
 
 
 
-## Fitting a Decision Tree
+## Fitting a Binary Classification Tree
 
 
 
