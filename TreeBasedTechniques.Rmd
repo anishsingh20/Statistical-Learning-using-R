@@ -95,8 +95,8 @@ summary(CarTree)
 The summary of the Model consists of the imporatant variables used for splitting the data which minimizes the deviance(Error) Rate and another Splitting criterion used is __Gini Indes__, which is also called *Purity Index*.
 
 
+---------------
 
--------
 
 
 #Plotting the Decision Tree
@@ -112,3 +112,44 @@ text(CarTree ,pretty = 1 )
 This tree is quiet Complicated and hard to understand due to lots of Splits and lots of variables included in the predictor space.The leaf nodes consists of the Response value i.e __Yes / No __.
 
 
+---------------
+
+
+### Splitting data to Training and Test Set
+
+
+```{r}
+set.seed(1001)
+#A training sample of 250  examples sampled without replacement
+train<-sample(1:nrow(Carseats), 250)
+#Fitting another Model
+tree1<-tree(HighSales ~ .-Sales , data = Carseats, subset = train)
+summary(tree1)
+#Plotting
+plot(tree1);text(tree1)
+
+```
+Now the tree is somewhat different and detailed but is quiet hard to interpret too due to lots of splits.
+
+
+__Predicting on Test Set__
+
+
+```{r}
+#Predicting the Class labels for Test set
+pred<-predict(tree1, newdata = Carseats[-train,],type = "class")
+head(pred)
+
+#Confusion Matrix to check number of Misclassifications
+with(Carseats[-train,],table(pred,HighSales))
+
+#Misclassification Error Rate on Test Set
+mean(pred!=Carseats[-train,]$HighSales)
+
+
+
+```
+The __Diagonals__ are the correctly classified Test Examples , whereas the __off-diagonals__ represent the misclassified examples.The Mean Error Rate is $\text{26%}$.
+
+
+The above tree was grown to Full length and might have lots of variables in it which might be degrading the Perfomance.We will now use 10 fold __Cross Validation__ to *Prune* the Tree.
