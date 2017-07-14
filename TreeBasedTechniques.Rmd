@@ -1,5 +1,5 @@
 ---
-title: "Tree Based Methods in R"
+title: "Decision Trees in R"
 output:
   html_document: default
   html_notebook: default
@@ -8,9 +8,14 @@ output:
 
 
 
-### This is a article on how to implement Tree based Techniques in R to do Predictive Modelling
+### This is a article on how to implement Tree based Learning Technique in R to do Predictive Modelling.
  
-It will include implementation of Decision Trees ,  Random Forests and other Tree based variants.
+Trees involve stratifying or sagmenting the Predictor($X_i$) space into a number of simple Regions.The tree based Methods generate a set of $Splitting \  Rules$ which are used to sagment the Predictor Space.These techniques of sagmenting and stratifying data into different Regions $R_j$ are called __Decision Trees__.Decision Trees are used in both Regression and Classification Problems.
+These are Statistical Learning Techniques which are easier to understand and Simpler in terms of interpretablity.
+
+The Rules generated are of form --
+
+$$R_j = If (X = X_1 \cap X_2  \cap ....X_p) -->  Y_i $$.
 
 
 
@@ -160,10 +165,50 @@ The above tree was grown to Full length and might have lots of variables in it w
 cv.tree1<-cv.tree(tree1, FUN=prune.misclass)
 cv.tree1
 plot(cv.tree1)
-#Deviance minimum for tree size 15
+#Deviance minimum for tree size 15 i.e 15 Splits 
 
 prune.tree1<-prune.misclass(tree1,best = 15)
+plot(prune.tree1);text(prune.tree1)
+
+```
+
+
+__Testing the pruned Tree on Test Set__ -
+
+```{r}
+pred1<-predict(prune.tree1 , Carseats[-train,],type="class")
+
+#Confusion Matrix
+with(Carseats[-train,],table(pred1,HighSales))
+
+#Misclassification Rate
+ErrorPrune<-mean(pred1!=Carseats[-train,]$HighSales)
+ErrorPrune
+#Error reduced to 25 %
 
 
 ```
+
+
+
+------------
+
+
+## Conclusion
+
+
+
+As we can notice by the perfomance on Test Set the Pruned Tree dosen't performs better as the Error rate reduced only by a factor of 0.1 % i.e from 26% to 25%.
+It's just that Pruning lead us to a more __simpler__ Tree with *lesser Splits and a subset of predictors* which is somewhat easier to interpret and understand.
+
+
+Usually *Trees* don't actually give good perfomance on Test Sets , and is called a __Weak Learner__.
+
+Applying Ensembling Techniques such as __Random Forests , Bagging and Boosting__ improves the Perfomance of Trees a lot by combining a lot of Trees trained on samples from training examples and finally *__combining(averaging)__* the Trees to form a single Strong Tree which performs nicely.
+
+
+Hope you guys liked the article , make sure to share and like it.
+
+
+
 
