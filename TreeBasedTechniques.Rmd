@@ -36,7 +36,17 @@ Carseats is a simulated data set containing sales of child car seats at 400 diff
 
 
 ```{r}
+#Checking the distribution of Sales
+
+ggplot(aes(x = Sales),data = Carseats) + 
+  geom_histogram(color="black",fill = 'purple',alpha = 0.6, bins=30) + 
+  labs(x = "Unit Sales in Thousands", y = "Frequency")
+
 
 ```
+As the histogram suggests - It is Normally distributed
+Highest frequency of around 8000 Unit Sales
+
+
 
 
