@@ -116,4 +116,8 @@ legend("topright",legend=c("Out of Bag Error","Test Error"),pch=19, col=c("red",
 ```
 
 
+Now what we observe is that the Red line is the Out of Bag Error Estimates and the Blue Line is the Error calculated on Test Set.Both curves are quiet smooth and the error estimates are somewhat correlated too.
+The Error Tends to be minimized at around $mtry = 4$.  
+
+On the Extreme Right Hand Side of the above Plot we choose all possible 13 predictors at each Split which is __Bagging__.
 
