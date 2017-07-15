@@ -19,3 +19,23 @@ Another major difference is that we only consider a Random subset of predictors 
 Now it seems crazy to throw away lots of predictors but it actually makes sense because the effect of doing is that each tree uses different predictors to split data at different times.
 
 *So by doing this trick of throwing away Predictors, we have decorrelated the Trees and the resulting average seems a little better. *
+
+
+
+-----
+
+
+## Implementing Random Forests in R
+
+Loading the Packages
+
+```{r,warning=FALSE,message=FALSE}
+require(randomForest)
+require(MASS)#Package which contains the Boston housing dataset
+
+dim(Boston)
+attach(Boston)
+set.seed(101)
+
+```
+
