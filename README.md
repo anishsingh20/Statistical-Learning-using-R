@@ -28,3 +28,10 @@ http://rpubs.com/anish20/GeneralizedAdditiveModelsinR
 ### Fourth document on Implementing Decision Trees in R using the 'tree' package
 
 http://rpubs.com/anish20/decisionTreesinR
+
+
+----
+
+### Fifth Article which Explains the concept of Random Forests and how to Implement it in R
+
+http://rpubs.com/anish20/RandomForests
