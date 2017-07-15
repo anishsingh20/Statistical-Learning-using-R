@@ -86,16 +86,33 @@ for(mtry in 1:13)
   oob.err[mtry] = rf$mse[400] #Error of all Trees fitted
   
   pred<-predict(rf,Boston[-train,]) #Predictions on Test Set for each Tree
-  test.err[mtry]= with(Boston[-train,], mean(medv - pred)^2) #Mean Squared Test Error
+  test.err[mtry]= with(Boston[-train,], mean( (medv - pred)^2)) #Mean Squared Test Error
   
   cat(mtry," ")
   
 }
 
+test.err  
+oob.err
 
 ```
 
 
 What happens is that 13 times 400 Trees have been grown.
+
+
+
+---------
+
+
+
+###Comparing both Test Error and Out of Sample Estimation for Random Forests
+
+```{r}
+
+matplot(1:mtry , cbind(oob.err,test.err), pch=19 , col=c("red","blue"),type="b",ylab="Mean Squared Error",xlab="Number of Predictors Considered at each Split")
+
+```
+
 
 
