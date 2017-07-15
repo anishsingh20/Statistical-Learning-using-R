@@ -12,4 +12,10 @@ Random Forests are a __Ensembling__ technique which is similar to a famous Ensem
 
 Averaging the Trees helps us to reduce the variance and also improve the Perfomance of Decision Trees on Test Set and eventually avoid Overfitting.
 
-The idea is to build a lots of Trees in such a way to make the *Correlation* between the Trees smaller.
+The idea is to build a lots of Trees in such a way so as to make the *Correlation* between the Trees smaller.
+
+Another major difference is that we only consider a Random subset of predictors $X_i$,say $m$ each time we do a split on training examples.Whereas usually in Trees we consider all the predictors while doing a split and choose best amongst them. Typically  $m = \sqrt{p} $ where $p$ are the number of predictors.
+
+Now it seems crazy to throw away lots of predictors but it actually makes sense because the effect of doing is that each tree uses different predictors to split data at different times.
+
+*So by doing this trick of throwing away Predictors, we have decorrelated the Trees and the resulting average seems a little better. *
