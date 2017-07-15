@@ -111,6 +111,7 @@ What happens is that 13 times 400 Trees have been grown.
 ```{r}
 
 matplot(1:mtry , cbind(oob.err,test.err), pch=19 , col=c("red","blue"),type="b",ylab="Mean Squared Error",xlab="Number of Predictors Considered at each Split")
+legend("topright",legend=c("Out of Bag Error","Test Error"),pch=19, col=c("red","blue"))
 
 ```
 
