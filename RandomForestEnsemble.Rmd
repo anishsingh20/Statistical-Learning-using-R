@@ -51,4 +51,37 @@ train<-sample(1:nrow(Boston),300)
 
 ```
 
-We are going to use variable 'medv' as the Response variable , which is the Median Housing Value.
+We are going to use variable $'medv'$ as the Response variable , which is the Median Housing Value.
+We will fit 500 Trees. 
+```{r}
+Boston.rf<-randomForest(medv ~ . , data = Boston , subset = train)
+Boston.rf
+```
+The above MSE and Variance explained are actually calculated using *Out of Bag Error Estimation*.In this $\frac23$rd of Training data is used in tranining and the reamining $\frac13$ are used to Validate the Trees.Also the number of variable randomly selected  at each split are 4.
+
+
+Plotting the Random Forests
+```{r}
+plot(Boston.rf)
+```
+
+
+
+-----
+
+
+### Now we can compare the Out of Bag Sample Errors and Error on Test set
+
+The above Random Forest model chose Randomly 4 variables to be considered at each split.
+We could now try all possible 13 predictors which can be considered at each split.
+
+```{r}
+oob.err<-double(13)
+test.err<-double(13)
+
+
+```
+
+
+
+
