@@ -39,3 +39,13 @@ set.seed(101)
 
 ```
 
+
+#####Saperating Training and Test Sets
+
+```{r}
+#training Sample with 300 observations
+train<-sample(1:nrow(Boston),300)
+
+
+```
+
