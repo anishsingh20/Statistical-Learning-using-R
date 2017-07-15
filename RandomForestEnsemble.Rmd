@@ -42,10 +42,13 @@ set.seed(101)
 
 #####Saperating Training and Test Sets
 
+We will use 300 samples in Training Set
+
 ```{r}
 #training Sample with 300 observations
 train<-sample(1:nrow(Boston),300)
-
+?Boston  
 
 ```
 
+We are going to use variable 'medv' as the Response variable , which is the Median Housing Value.
