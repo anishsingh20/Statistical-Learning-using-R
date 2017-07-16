@@ -86,6 +86,10 @@ n.trees = seq(from=100 ,to=10000, by=100) #no of trees-a vector of 100 values
 predmatrix<-predict(Boston.boost,Boston[-train,],n.trees = n.trees)
 dim(predmatrix) #dimentions of the Prediction Matrix
 
+#Calculating The Mean squared Test Error
+test.error<-with(Boston[-train,],apply( (predmatrix-medv)^2,2,mean))
+head(test.error)
+
 
 ```
 
