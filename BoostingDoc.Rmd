@@ -3,3 +3,12 @@ title: "Boosting in R"
 output: html_notebook
 ---
 
+
+## Boosting
+
+Random Forests actually used to reduce the variance of the Trees by averaging them. SO it generates big Bushy trees and then averages them to get rid of variance.
+
+__Boosting__ on other hand generates smaller simpler trees and goes at the *__Bias__*.So the Idea in Boosting is to convert a Weak learner to a Strong Learner by doing *weighted averaging* of lots of Models generated on Harder Examples and using the Information from a previous Model.  
+
+Harder Examples 
+
