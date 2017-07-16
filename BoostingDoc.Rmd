@@ -1,16 +1,18 @@
 ---
 title: "Boosting in R"
-output: html_notebook
+output:
+  html_notebook: default
+  html_document: default
 ---
 
 
 ## Boosting
 
-Random Forests actually used to reduce the variance of the Trees by averaging them. SO it generates big Bushy trees and then averages them to get rid of variance.
+Random Forests are actually used to reduce the variance of the Trees by averaging them. So it generates big Bushy trees and then averages them to get rid of variance.
 
 __Boosting__ on other hand generates smaller simpler trees and goes at the *__Bias__*.So the Idea in Boosting is to convert a *__Weak learner__* to a *__Strong Learner__* by doing *weighted averaging* of lots of Models generated on Harder Examples and using the Information from a previous Model.  
 
-Harder Examples in the sense means the training Examples which were not classified correctly or more generally which were not predicted correctly by the Model.
+Harder Examples in the sense means the training Examples which were not classified correctly or more generally which were not predicted correctly by the previous Model.
 
 Boosting is a Sequential Method. Each tree that's added into the mix is added to improve the perfomance of previous collection of Trees.
 
@@ -59,6 +61,7 @@ The summary of the Model gives a *__Feature importance Plot__* . And the 2 most 
 The partial Dependence Plots will tell us the relationship and dependence of the variables with the Response variable.
 
 ```{r}
+
 plot(Boston.boost,i="lstat") #Plot of Response variable with lstat variable
 #Inverse relation with lstat variable ie
 
