@@ -47,4 +47,20 @@ summary(Boston.boost) #Summary gives a table of Variable Importance and a plot o
 
 The above Boosted Model is a Gradient Boosted Model which generates 10000 trees and the shrinkage parameter $\lambda= 0.01$ which is also a sort of __Learning Rate__. Next parameter is the interaction depth which is the total *splits* we want to do.So here each tree is a small tree with only 4 splits.
 
-The summary of the Model gives a Feature importance Plot . And the 2 most important features which explaines the maximum variance in the Data set is 'lstat' and 'rm'.
+The summary of the Model gives a *__Feature importance Plot__* . And the 2 most important features which explaines the maximum variance in the Data set is 'lstat' and 'rm'.
+
+
+-----
+
+
+###Let's plot the Partial Dependence Plots
+
+
+The partial Dependence Plots will tell us the relationship and dependence of the variables with the Response variable.
+
+```{r}
+
+
+
+```
+
