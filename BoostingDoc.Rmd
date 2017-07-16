@@ -69,3 +69,24 @@ plot(Boston.boost,i="rm")
 ```
 
 In the above plots, the y-axis contains the Response values and the x-axis contains the variable values.So 'medv' is inversely related to the 'lstat' variable , and the 'rm' variable is related directly to 'medv'.
+
+
+
+------
+
+
+### Prediction on Test Set
+
+We will compute the Test Error as a function of number of Trees.
+
+```{r}
+n.trees = seq(from=100 ,to=10000, by=100) #no of trees-a vector of 100 values 
+
+#Generating a Prediction matrix for each Tree
+predmatrix<-predict(Boston.boost,Boston[-train,],n.trees = n.trees)
+dim(predmatrix) #dimentions of the Prediction Matrix
+
+
+```
+
+
