@@ -94,7 +94,20 @@ head(test.error)
 
 plot(n.trees , test.error , pch=19,col="blue",xlab="Number of Trees",ylab="Test Error", main = "Perfomance of Boosting on Test Set")
 
+#adding the RandomForests Minimum Error line 
+abline(h = min(test.err),col="red")
+legend("topright",c("Minimum Test error Line for Random Forests"),col="red",lty=1,lwd=1)
+
 
 ```
+Boosting outperforms Random Forests on same Test dataset with  lesser  Mean squared Test Errors.
 
 
+-----
+
+
+###Conclusion
+
+In the above plot we can notice that if Boosting is done properly by selecting appropiate Tuning parameters such as Shrinkage parameter $\lambda$ and secondly the Number of Splits we want , then it can outperform Random Forests most of the times.
+
+Both methods are amazingly good Ensembling Techniques and reduce Overfitting and improve the perfomance of Statistical Models.
