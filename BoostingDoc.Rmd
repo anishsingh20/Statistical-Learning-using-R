@@ -59,8 +59,13 @@ The summary of the Model gives a *__Feature importance Plot__* . And the 2 most 
 The partial Dependence Plots will tell us the relationship and dependence of the variables with the Response variable.
 
 ```{r}
+plot(Boston.boost,i="lstat") #Plot of Response variable with lstat variable
+#Inverse relation with lstat variable ie
 
+plot(Boston.boost,i="rm") 
+#as the average number of rooms increases the the price increases
 
 
 ```
 
+In the above plots, the y-axis contains the Response values and the x-axis contains the variable values.So 'medv' is inversely related to the 'lstat' variable , and the 'rm' variable is related directly to 'medv'.
