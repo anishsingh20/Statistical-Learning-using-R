@@ -19,13 +19,28 @@ Boosting is a Sequential Method. Each tree that's added into the mix is added to
 -----
 
 
-###Implementing it in R using gbm package
+###Implementing Gradient Boosting in R using gbm package
 
 
 'gbm' package is the Gradient Boosting Package.
 
 ```{r,warning=FALSE,message=FALSE}
 require(gbm)
+require(MASS)
+
+```
+
+
+Building the Boosted Trees on Boston Housing Dataset.
+
+
+```{r}
+
+Boston.boost<-gbm(medv ~ . ,data = Boston[-train,],distribution = "gaussian",n.trees = 10000,
+                  shrinkage = 0.01, interaction.depth = 4)
+Boston.boost
+
+summary(Boston.boost) #Summary gives a table of Variable Importance and a plot of Variable Importance
 
 
 ```
