@@ -90,6 +90,10 @@ dim(predmatrix) #dimentions of the Prediction Matrix
 test.error<-with(Boston[-train,],apply( (predmatrix-medv)^2,2,mean))
 head(test.error)
 
+#Plotting 
+
+plot(n.trees , test.error , pch=19,col="blue",xlab="Number of Trees",ylab="Test Error", main = "Perfomance of Boosting on Test Set")
+
 
 ```
 
