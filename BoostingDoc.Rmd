@@ -12,3 +12,21 @@ __Boosting__ on other hand generates smaller simpler trees and goes at the *__Bi
 
 Harder Examples in the sense means the training Examples which were not classified correctly or more generally which were not predicted correctly by the Model.
 
+Boosting is a Sequential Method. Each tree that's added into the mix is added to improve the perfomance of previous collection of Trees.
+
+
+
+-----
+
+
+###Implementing it in R using gbm package
+
+
+'gbm' package is the Gradient Boosting Package.
+
+```{r,warning=FALSE,message=FALSE}
+require(gbm)
+
+
+```
+
