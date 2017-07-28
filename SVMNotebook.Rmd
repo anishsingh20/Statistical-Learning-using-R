@@ -3,4 +3,11 @@ title: "Support Vector Machines"
 output: html_notebook
 ---
 
-This article will explain how to implement Support Vector Machines in R and their in depth interpretation. 
+This article will explain how to implement Support Vector Machines in R and their in depth interpretation.
+
+__Support Vector Classifiers__ are majorly used solving a binary clssification 
+problem where we only have 2 class labels say $Y = [-1,1]$ and a bunch of predictors $X_i$ .And what SVM does is that it generates Hyperplanes which in simple terms are just __straight lines or planes__ or are Non-linear curves , and these lines are used to saperate the data or sagment the data into 2 categories or more depending on the type of Classification problem.
+
+This concept of separating data linearly into 2 different classes using a Linear Separator or a straight linear line is called *__Linear Separability__*.
+
+
