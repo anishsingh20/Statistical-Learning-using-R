@@ -27,4 +27,26 @@ Another concept in SVM is of *Maximal Margin Classifiers*.What it means is that 
 
 This concept of separating data linearly into 2 different classes using a Linear Separator or a straight linear line is called *__Linear Separability__*.
 
+-------------
+
+###Linear SVM Classifier in R
+
+
+```{r}
+set.seed(10023)
+#generating data
+#a matrix with 20 rows and 2 columns
+x=matrix(rnorm(40),20,2)
+y=rep(c(-1,1),c(10,10))
+x[y==1,]=x[y==1,]+1 #2 classes are [-1,1]
+
+
+
+
+
+
+```
+
+
+
 
