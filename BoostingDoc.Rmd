@@ -1,8 +1,8 @@
 ---
 title: "Boosting in R"
 output:
-  html_notebook: default
   html_document: default
+  html_notebook: default
 ---
 
 
@@ -38,7 +38,7 @@ Building the Boosted Trees on Boston Housing Dataset.
 
 ```{r}
 
-Boston.boost<-gbm(medv ~ . ,data = Boston[-train,],distribution = "gaussian",n.trees = 10000,
+Boston.boost<-gbm(medv ~ .,data = Boston[-train,],distribution = "gaussian",n.trees = 10000,
                   shrinkage = 0.01, interaction.depth = 4)
 Boston.boost
 

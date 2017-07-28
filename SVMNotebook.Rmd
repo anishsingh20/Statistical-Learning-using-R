@@ -1,0 +1,6 @@
+---
+title: "Support Vector Machines"
+output: html_notebook
+---
+
+This article will explain how to implement Support Vector Machines in R and their in depth interpretation. 
