@@ -66,10 +66,11 @@ head(data)
 svm<-svm(y ~ .,data=data,kernel="linear",cost=10,scale = F)
 #here cost 'c' is a tuning parameter .The larger it is more stable the margin becomes, it is like a Regularization parameter 
 svm
+svm$index #gives us the index of the Support Vectors
 #so we have 10 support vectors
 svm$fitted #to find the fitted values
 
-#Confusion Matrix of Fitted values and Actual values
+#Confusion Matrix of Fitted values and Actual Response values
 table(Predicted=svm$fitted,Actual=y)
 
 #accuracy on Training Set
@@ -89,6 +90,13 @@ make.grid<-function(x,n=75) {
   x2=seq(from=grange[1,2],to=grange[2,2],length=n)
   expand.grid(X1=x1,X2=x2) #it makes a Lattice for us
 }
+xgrid=make.grid(x) #is a 75x75 matrix
 
+#now predicting on this new Test Set
+ygrid=predict(svm,xgrid)
+
+#plotting the Linear Separator
+plot(xgrid,col=c("red","purple")[as.numeric(ygrid)],pch=19,cex=.2)
+#creates 2 regions
 ```
 
