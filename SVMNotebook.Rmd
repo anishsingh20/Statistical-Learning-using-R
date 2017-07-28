@@ -96,7 +96,34 @@ xgrid=make.grid(x) #is a 75x75 matrix
 ygrid=predict(svm,xgrid)
 
 #plotting the Linear Separator
-plot(xgrid,col=c("red","purple")[as.numeric(ygrid)],pch=19,cex=.2)
+plot(xgrid,col=c("red","blue")[as.numeric(ygrid)],pch=19,cex=.2)
 #creates 2 regions
+points(x,col=y+3,pch=19) #adding the points on Plot
+points(x[svm$index,],pch=5,cex=2) #Highlighting the Support Vectors
+```
+In the above Plot the __Highlighted points__ are the Support Vectors which were used in determining the Decision Boundary.
+
+Adding more details to the plot and finding the coefficients $\beta_p$ values
+```{r}
+beta = drop(t(svm$coefs)%*%x[svm$index,])
+beta
+
+
+```
+The $\beta$ here are the coefficient values of the SVM model.As it is a Linear SVM classifier, the equation is:
+$y_i=f(x) = \beta_0 + \beta_1.X_1 + \beta_2X_2$
+
+```{r}
+beta0=svm$rho
+beta0 #the intercept value
+#again Plotting
+plot(xgrid,col=c("red","blue")[as.numeric(ygrid)],pch=19,cex=.2)
+#creates 2 regions
+points(x,col=y+3,pch=19) #adding the points on Plot
+points(x[svm$index,],pch=5,cex=2)
+abline(beta0/beta[2],-beta[1]/beta[2],lty=1)#is the Decision boundary or Plane
+#below are for adding the soft margins
+abline((beta0-1)/beta[2],-beta[1]/beta[2],lty=2)
+abline((beta0+1)/beta[2],-beta[1]/beta[2],lty=2)
 ```
 
