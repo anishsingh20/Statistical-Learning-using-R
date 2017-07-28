@@ -67,6 +67,9 @@ svm<-svm(y ~ .,data=data,kernel="linear",cost=10,scale = F)
 #here cost 'c' is a tuning parameter .The larger it is more stable the margin becomes, it is like a Regularization parameter 
 svm
 #so we have 10 support vectors
+
+#plotting
+plot(svm,data)
 ```
 
 
