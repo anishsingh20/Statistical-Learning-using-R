@@ -1,6 +1,8 @@
 ---
 title: "Support Vector Machines"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 This article will explain how to implement Support Vector Machines in R and their in depth interpretation.
@@ -103,16 +105,27 @@ points(x[svm$index,],pch=5,cex=2) #Highlighting the Support Vectors
 ```
 In the above Plot the __Highlighted points__ are the Support Vectors which were used in determining the Decision Boundary.
 
-Adding more details to the plot and finding the coefficients $\beta_p$ values
+
+--------------
+
+
+####Extracting the Coefficient values of the Linear SVM equation
+
+The $\beta$ here are the coefficient values of the SVM model.As it is a Linear SVM classifier, the linear equation is linearly dependent on the predictors $X_1$ and $X_2$.
+
+
+$y_i=f(x,\beta) = \beta_0 + \beta_1.X_1 + \beta_2X_2$ , is the mathematical equation for the Linear SVM classifier.
+
+
+
+
 ```{r}
 beta = drop(t(svm$coefs)%*%x[svm$index,])
 beta
 
 
 ```
-The $\beta$ here are the coefficient values of the SVM model.As it is a Linear SVM classifier, the linear equation is linearly dependent on the predictors $X1$ and $X2$.
 
-$y_i=f(x) = \beta_0 + \beta_1.X_1 + \beta_2X_2$
 
 ```{r}
 beta0=svm$rho
@@ -127,4 +140,17 @@ abline(beta0/beta[2],-beta[1]/beta[2],lty=1)#is the Decision boundary or Plane
 abline((beta0-1)/beta[2],-beta[1]/beta[2],lty=2)
 abline((beta0+1)/beta[2],-beta[1]/beta[2],lty=2)
 ```
+In the above plot the dashed lines are actually the __Soft margins__ which are again margins which include the support vectors within or on them. And how small or wide these soft margins becomes depend on the value of our tuning parameter $c$ which we assigned the value as 10 in the above SVM.
 
+
+---------------
+
+
+
+###Conclusion
+
+Support Vector Machines are actually very strong and accurate technique to do Classification.SVM are preferable when the classes are saperated well like in the example we did above we had 10 labels for 1 and 10 for -1.One unique thing about SVMs are that they don't actually follow or use a Conditional Probability Model $Pr(Y | X_i)$ like other classifiers do.
+
+Linear SVM can not always be useful.Linear SVM can only be used when the data is linearly saperable. 
+
+When the the data is __Non linearly saperable__ i.e has Non linearities in it we need to do Feature Expansion i.e do a Non linear transform to the features to convert to higher dimentions and use a Non linear function $\hat f(x,\beta) $ to fit a Non linear Decision Boundary which saperates the data in an enlarged feature space.An example is __Radial SVM__ which uses a radial __Kernel__.
