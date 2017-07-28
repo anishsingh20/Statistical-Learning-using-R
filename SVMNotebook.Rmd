@@ -12,17 +12,18 @@ General form of a Hyperplane is :
 $$\beta_0  + \beta_1X_1  +  \beta_2X_2  + . . .. . \beta_pX_p = 0 $$
 where $p$ is the number of Dimentions.
 
-1) For $p=2$ i.e 2-D space it is a Line.
+
+1) For $p=2$ i.e for a 2-D space it is a Line.
 
 2)The vector $(\beta_1,\beta_2,\beta_3...\beta_p) is \ just \ a \ Normal\ vector.$ A vector in simple terms is just a 1-Dimentional Tensor or a 1-D array.
 
 
 
-__Support Vector Classifiers__ are majorly used solving a binary clssification 
-problem where we only have 2 class labels say $Y = [-1,1]$ and a bunch of predictors $X_i$ .And what SVM does is that it generates Hyperplanes which in simple terms are just __straight lines or planes__ or are Non-linear curves , and these lines are used to saperate the data or sagment the data into 2 categories or more depending on the type of Classification problem.
+__Support Vector Classifiers__ are majorly used  for solving a binary clssification problem where we only have 2 class labels say $Y = [-1,1]$ and a bunch of predictors $X_i$ .And what SVM does is that it generates Hyperplanes which in simple terms are just __straight lines or planes__ or are Non-linear curves , and these lines are used to saperate the data or sagment the data into 2 categories or more depending on the type of Classification problem.
 
-We try to find a __plane__ which saperates the classes in some feature space.
+We try to find a __plane__ which saperates the classes in some feature space $X_i$.
 
+Another concept in SVM is of *Maximal Margin Classifiers*.What it means is that amongst a set of separating hyperplanes SVM aims at finding the one which maximizes the margin $M$.This simply means that we want to maximize the gap or the distance between the 2 classes from the Decision Boundary(separating plane).
 
 This concept of separating data linearly into 2 different classes using a Linear Separator or a straight linear line is called *__Linear Separability__*.
 
