@@ -27,6 +27,10 @@ Another concept in SVM is of *Maximal Margin Classifiers*.What it means is that 
 
 This concept of separating data linearly into 2 different classes using a Linear Separator or a straight linear line is called *__Linear Separability__*.
 
+The term *__Support Vectors__* in SVM are the data points or training examples which are used to define or maximizing the margin.The support vectors are the points which are close to the decision boundary or on the wrong side of the boundary.  
+
+
+
 -------------
 
 ###Linear SVM Classifier in R
@@ -37,14 +41,32 @@ set.seed(10023)
 #generating data
 #a matrix with 20 rows and 2 columns
 x=matrix(rnorm(40),20,2)
+x
 y=rep(c(-1,1),c(10,10))
 x[y==1,]=x[y==1,]+1 #2 classes are [-1,1]
 
+#plotting the points
+plot(x,col=y+2,pch=19)
+
+```
 
 
 
 
+------------
 
+#### Using the 'e1071' package to fit a SVM classifier
+
+```{r,message=FALSE,warning=FALSE}
+require(e1071)
+#converting to a data frame
+data<-data.frame(x,y=as.factor(y))
+head(data)
+
+svm<-svm(y ~ .,data=data,kernel="linear",cost=10,scale = F)
+#here cost 'c' is a tuning parameter .The larger it is more stable the margin becomes, it is like a Regularization parameter 
+svm
+#so we have 10 support vectors
 ```
 
 
