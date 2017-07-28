@@ -67,11 +67,28 @@ svm<-svm(y ~ .,data=data,kernel="linear",cost=10,scale = F)
 #here cost 'c' is a tuning parameter .The larger it is more stable the margin becomes, it is like a Regularization parameter 
 svm
 #so we have 10 support vectors
+svm$fitted #to find the fitted values
+
+#Confusion Matrix of Fitted values and Actual values
+table(Predicted=svm$fitted,Actual=y)
+
+#accuracy on Training Set
+mean(svm$fitted==y)*100 #has 80 % accuracy on Training Set
 
 #plotting
 plot(svm,data)
 ```
 
 
+We can also create our own plot.
+```{r, message=FALSE, warning=FALSE}
+#First Making Grids using a function
+make.grid<-function(x,n=75) {
+  grange=apply(x,2,range)
+  x1=seq(from=grange[1,1],to=grange[2,1],length=n)
+  x2=seq(from=grange[1,2],to=grange[2,2],length=n)
+  expand.grid(X1=x1,X2=x2) #it makes a Lattice for us
+}
 
+```
 
