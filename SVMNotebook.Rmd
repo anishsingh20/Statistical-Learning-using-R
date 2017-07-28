@@ -110,7 +110,8 @@ beta
 
 
 ```
-The $\beta$ here are the coefficient values of the SVM model.As it is a Linear SVM classifier, the equation is:
+The $\beta$ here are the coefficient values of the SVM model.As it is a Linear SVM classifier, the linear equation is linearly dependent on the predictors $X1$ and $X2$.
+
 $y_i=f(x) = \beta_0 + \beta_1.X_1 + \beta_2X_2$
 
 ```{r}
