@@ -35,3 +35,9 @@ http://rpubs.com/anish20/decisionTreesinR
 ### Fifth Article which Explains the concept of Random Forests and how to Implement it in R
 
 http://rpubs.com/anish20/RandomForests
+
+----
+
+### Article on Support Vector Machine in R
+
+http://rpubs.com/anish20/svmR
