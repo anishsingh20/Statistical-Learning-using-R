@@ -1,8 +1,8 @@
 ---
 title: "Support Vector Machines"
 output:
-  html_document: default
   html_notebook: default
+  html_document: default
 ---
 
 This article will explain how to implement Support Vector Machines in R and their in depth interpretation.
@@ -42,9 +42,9 @@ The term *__Support Vectors__* in SVM are the data points or training examples w
 set.seed(10023)
 #generating data
 #a matrix with 20 rows and 2 columns
-x=matrix(rnorm(40),20,2)
+x=matrix(rnorm(40),20,2) #predictors
 x
-y=rep(c(-1,1),c(10,10))
+y=rep(c(-1,1),c(10,10))#Binary response value
 x[y==1,]=x[y==1,]+1 #2 classes are [-1,1]
 
 #plotting the points
@@ -153,4 +153,4 @@ Support Vector Machines are actually very strong and accurate technique to do Cl
 
 Linear SVM can not always be useful.Linear SVM can only be used when the data is linearly saperable. 
 
-When the the data is __Non linearly saperable__ i.e has Non linearities in it we need to do Feature Expansion i.e do a Non linear transform to the features to convert to higher dimentions and use a Non linear function $\hat f(x,\beta) $ to fit a Non linear Decision Boundary which saperates the data in an enlarged feature space.An example is __Radial SVM__ which uses a radial __Kernel__.
+When the the data is __Non linearly saperable__ i.e has Non linearities in it we need to do Feature Expansion i.e do a Non linear transform to the features to convert to higher dimentions and use a Non linear function $f(x,\beta)$ which is Non linear in predictors $X_i$ to get a Non linear Decision Boundary which saperates the data in an enlarged feature space.An example is __Radial SVMs__ which uses a radial __kernel__.
