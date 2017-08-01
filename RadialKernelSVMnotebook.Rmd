@@ -10,4 +10,10 @@ This article will be all about how to separate non linear data using a *__non-li
 
 It is often encountered that Linear Separators and boundaries fail because of the non linear interactions in the data and in the non linear dependence between the features in feature space.
 
+The trick is we will do feature expansion.
+
 So how we solve this problem is via doing a non linear transformation on the features($X_i$) and converting them to a higher dimentional space called a feature space.Now by this transformation we are able to saperate non linear data using a non linear decision boundary.
+
+Non linearities can simply be added by using higher dimention terms such as square and cubic polynomial terms .
+
+$$y_i = \beta_0 + \beta_1X_{1} \ +  \beta_2X_{1}^2 +  \beta_3X_2 + \beta_4X_2^2 +  \beta_5X_2^3 .... = 0  $$ is the equation of the non linear hyperplane which is generated if we use *higher degree polynomials* terms to fit to data to get a non linear decision boundary.
