@@ -8,9 +8,9 @@ output: html_notebook
 
 This article will be all about how to separate non linear data using a *__non-linear decision boundary__ *, which cannot be simply separated by a linear separator.
 
-It is often encountered that Linear Separators and boundaries fail because of the non linear interactions in the data and in the non linear dependence between the features in feature space.
+It is often encountered that Linear Separators and boundaries fail because of the non linear interactions in the data and the non linear dependence between the features in feature space.
 
-The trick is we will do feature expansion.
+The trick here is that ,we will do __feature expansion__.
 
 So how we solve this problem is via doing a non linear transformation on the features($X_i$) and converting them to a higher dimentional space called a feature space.Now by this transformation we are able to saperate non linear data using a non linear decision boundary.
 
@@ -23,3 +23,11 @@ What we are actually doing is that we are fitting a SVM is an enlarged space.We 
 But the problem with __Polynomials__ are that in higher dimentions i.e when having lots of predictors it gets wild and generally overfits at higher degrees of polynomials.
 
 Hence there is another elegant way of adding non linearities in SVM is by the use of *__Kernel trick__*.
+
+-----------------
+
+
+####Kernel Function
+
+Kernel function is a function of form--
+$$K(x,y) = (1 + \sum_{j=1}^{p} x_{ij}. y_{ij})^d$$ where d = degree of polynomial.
