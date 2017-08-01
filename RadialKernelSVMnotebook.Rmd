@@ -8,4 +8,6 @@ output: html_notebook
 
 This article will be all about how to separate non linear data using a *__non-linear decision boundary__ *, which cannot be simply separated by a linear separator.
 
-It is often encountered that Linear Separators and boundaries fail because of the non linear interactions in the data 
+It is often encountered that Linear Separators and boundaries fail because of the non linear interactions in the data and in the non linear dependence between the features in feature space.
+
+So how we solve this problem is via doing a non linear transformation on the features($X_i$) and converting them to a higher dimentional space called a feature space.Now by this transformation we are able to saperate non linear data using a non linear decision boundary.
