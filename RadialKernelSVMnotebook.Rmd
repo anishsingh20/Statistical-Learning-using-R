@@ -3,3 +3,9 @@ title: "Radial Kernel SVM"
 output: html_notebook
 ---
 
+
+###Radial Kernel Support Vector Machine
+
+This article will be all about how to separate non linear data using a *__non-linear decision boundary__ *, which cannot be simply separated by a linear separator.
+
+It is often encountered that Linear Separators and boundaries fail because of the non linear interactions in the data 
