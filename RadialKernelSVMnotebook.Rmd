@@ -17,3 +17,9 @@ So how we solve this problem is via doing a non linear transformation on the fea
 Non linearities can simply be added by using higher dimention terms such as square and cubic polynomial terms .
 
 $$y_i = \beta_0 + \beta_1X_{1} \ +  \beta_2X_{1}^2 +  \beta_3X_2 + \beta_4X_2^2 +  \beta_5X_2^3 .... = 0  $$ is the equation of the non linear hyperplane which is generated if we use *higher degree polynomials* terms to fit to data to get a non linear decision boundary.
+
+What we are actually doing is that we are fitting a SVM is an enlarged space.We enlarge the space of features by doing non linear transformations.
+
+But the problem with __Polynomials__ are that in higher dimentions i.e when having lots of predictors it gets wild and generally overfits at higher degrees of polynomials.
+
+Hence there is another elegant way of adding non linearities in SVM is by the use of *__Kernel trick__*.
