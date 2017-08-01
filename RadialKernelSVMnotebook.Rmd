@@ -31,3 +31,14 @@ Hence there is another elegant way of adding non linearities in SVM is by the us
 
 Kernel function is a function of form--
 $$K(x,y) = (1 + \sum_{j=1}^{p} x_{ij}. y_{ij})^d$$ where d = degree of polynomial.
+
+Now the type of Kernel function we are going to use here is a __Radial kernel__.
+
+The radial kernel is of form:
+$$k(x,y) = \exp(- \  \gamma \ \sum_{j=1}^{p}(x_{ij} - y_{ij})^2) $$
+Here $\gamma$ is a hyper parameter or a tuning parameter which accounts for the smoothness of the decision boundary and controls the variance of the model.
+
+If $\gamma$ is very large then we get quiet fluctuating and wiggly decision boundaries which accounts for high variance and overfitting.
+
+If $\gamma$ is small , the decison line or boundary is smoother and has low variance.
+
