@@ -81,3 +81,27 @@ mean(Radialsvm$fitted!=data$y)*100 #17% wrong predictions
 
 ```
 
+Now let's create a grid and make prediction on that grid values.
+
+```{r}
+xgrid=expand.grid(X1=px1,X2=px2) #generating grid points
+
+ygrid=predict(Radialsvm,newdata = xgrid) #ygird consisting of predicted Response values
+
+#lets plot the non linear decision boundary
+plot(xgrid,col=as.numeric(ygrid),pch=20,cex=0.3)
+points(x,col=y+1,pch=19) #we can see that the decision boundary is non linear
+
+
+```
+
+
+Now we can also improve the fit , by actually including the decision boundary using the contour() function.
+
+```{r}
+func = predict(Radialsvm,xgrid,decision.values = TRUE)
+func=attributes(func)$decision #to pull out all the attributes and use decison attr
+
+
+```
+
