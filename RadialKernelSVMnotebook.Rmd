@@ -61,6 +61,22 @@ names(mixture.example)
 
 The following data is also 2-D , so lets plot it.
 ```{r}
+plot(x,col=y+3)
+#converting data to a data frame
+data<-data.frame(y=factor(y),x)
+head(data)
+```
+Now let's fit a Radial kernel using *svm()* function.
+
+```{r}
+Radialsvm<-svm(factor(y) ~ .,data=data,kernel="radial",cost=5,scale=F)
+Radialsvm
+#number of support vectors are 110
+
+#Confusion matrix to ckeck the accuracy
+table(predicted=Radialsvm$fitted,actual=data$y)
+#misclassification Rate
+mean(Radialsvm$fitted!=data$y)*100 #17% wrong predictions
 
 
 ```
