@@ -36,9 +36,29 @@ Now the type of Kernel function we are going to use here is a __Radial kernel__.
 
 The radial kernel is of form:
 $$k(x,y) = \exp(- \  \gamma \ \sum_{j=1}^{p}(x_{ij} - y_{ij})^2) $$
-Here $\gamma$ is a hyper parameter or a tuning parameter which accounts for the smoothness of the decision boundary and controls the variance of the model.
+Here $\gamma$ is a hyper parameter or a __tuning parameter__ which accounts for the smoothness of the decision boundary and controls the variance of the model.
 
 If $\gamma$ is very large then we get quiet fluctuating and wiggly decision boundaries which accounts for high variance and overfitting.
 
 If $\gamma$ is small , the decison line or boundary is smoother and has low variance.
+
+
+--------------
+
+
+### Implementation in R
+
+
+```{r,message=FALSE,warning=FALSE}
+require(e1071)
+require(ElemStatLearn)#package containing the dataset
+
+#Loading the data
+attach(mixture.example)
+
+
+
+
+```
+
 
