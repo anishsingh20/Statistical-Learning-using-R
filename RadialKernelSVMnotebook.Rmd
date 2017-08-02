@@ -54,11 +54,14 @@ require(e1071)
 require(ElemStatLearn)#package containing the dataset
 
 #Loading the data
-attach(mixture.example)
-
-
-
+attach(mixture.example) #is just a simulated mixture data with 200 rows and 2 classes
+names(mixture.example)
 
 ```
 
+The following data is also 2-D , so lets plot it.
+```{r}
+
+
+```
 
