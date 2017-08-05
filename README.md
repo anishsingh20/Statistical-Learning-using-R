@@ -45,6 +45,6 @@ http://rpubs.com/anish20/svmR
 
 --------
 
-### Linear Kernel Support vector classifier explained 
+### Article on Radial Kernel Support vector classifier
 
-http://rpubs.com/anish20/svmR
+http://rpubs.com/anish20/radialSVM
