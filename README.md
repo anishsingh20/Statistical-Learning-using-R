@@ -41,3 +41,10 @@ http://rpubs.com/anish20/RandomForests
 ### Article on Support Vector Machine in R
 
 http://rpubs.com/anish20/svmR
+
+
+--------
+
+### Linear Kernel Support vector classifier explained 
+
+http://rpubs.com/anish20/svmR
