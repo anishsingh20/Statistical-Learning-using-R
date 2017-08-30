@@ -33,7 +33,7 @@ head(test.error)
 
 plot(n.trees , test.error , pch=19,col="blue",xlab="Number of Trees",ylab="Test Error", main = "Perfomance of Boosting on Test Set")
 
-#adding the RandomForests Minimum Error line 
+#adding the RandomForests Minimum Error line trained on same data and similar parameters
 abline(h = min(test.err),col="red")
 legend("topright",c("Minimum Test error Line for Random Forests"),col="red",lty=1,lwd=1)
 
