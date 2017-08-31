@@ -15,7 +15,13 @@ apply(USArrests,2,var) #there is a lot of difference in variances of each variab
 
 #So will have to standardize the variables to Unit variance
 
-#using precomp() function to do so and get PC.
+#using prcomp() function to do so and get PC.
 
+pca.out<-prcomp(USArrests,scale=TRUE)
+pca.out
+#summary of the PCA
+summary(pca.out)
+#maximum % of variance is explained by PC1 , and all PCs are mutually uncorrelated. 
+names(pca.out)
 
 
