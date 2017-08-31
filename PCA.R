@@ -18,6 +18,7 @@ apply(USArrests,2,var) #there is a lot of difference in variances of each variab
 
 #using prcomp() function to do so and get PC.
 
+
 pca.out<-prcomp(USArrests,scale=TRUE)
 pca.out
 #summary of the PCA
@@ -25,5 +26,7 @@ summary(pca.out)
 #maximum % of variance is explained by PC1 , and all PCs are mutually uncorrelated. 
 names(pca.out)
 
-biplot(pca.out,scale = 0, cex=0.6,)
+#Biplot of the Principal Components which explains the variance in data in each direction
+#of the variable
+biplot(pca.out,scale = 0, cex=0.65)
 
