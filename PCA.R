@@ -9,4 +9,13 @@ dimnames(USArrests)
 
 #finding mean of all 
 apply(USArrests,2,mean)
-apply(USArrests,2,var)
+apply(USArrests,2,var) #there is a lot of difference in variances of each variable
+#in PCA mean does not playes a role , but variance plays a major role in defining PC
+#so very large differences in VAR value of a variable will definately dominate the PC.
+
+#So will have to standardize the variables to Unit variance
+
+#using precomp() function to do so and get PC.
+
+
+
