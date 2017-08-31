@@ -13,7 +13,8 @@ apply(USArrests,2,var) #there is a lot of difference in variances of each variab
 #in PCA mean does not playes a role , but variance plays a major role in defining PC
 #so very large differences in VAR value of a variable will definately dominate the PC.
 
-#So will have to standardize the variables to Unit variance
+#So will have to standardize the variables to Unit variance and SD
+#It is done via (X -mean(X) / sd(X) )
 
 #using prcomp() function to do so and get PC.
 
@@ -24,4 +25,5 @@ summary(pca.out)
 #maximum % of variance is explained by PC1 , and all PCs are mutually uncorrelated. 
 names(pca.out)
 
+biplot(pca.out,scale = 0, cex=0.6,)
 
