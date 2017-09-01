@@ -39,7 +39,7 @@ This technique is often termed as __Dimentionality Reduction__ which is famous t
 
 ###Details
 
-1) we have a set of input vectors $x_1,x_2,x_3.....x_p$ with $n$ observations in dataset.
+1) we have a set of input column vectors $x_1,x_2,x_3.....x_p$ with $n$ observations in dataset.
 
 2) The $1^{st}$ principal component $Z_1$ of a set of features is the __normalized linear combination__ of the features $x_1,x_2....x_p$.
     $$Z_1=z_{i1} = \sum_{i=1}^n \phi_{11}x_1 + \phi_{{21}}x_2 + \phi_{31}x_3 + .........\phi_{pi}x_p $$,
@@ -57,5 +57,21 @@ The first Principal component solves the below optimization problem of maximizin
 
 $$maximize: \frac{1}{n} \sum_{i=1}^n \sum_{j=1}^p (\phi{ji}.X_{ij})^2  subject \ to \sum_{j=1}^p \phi_{ji}^2=1  $$
 Here each principal component has mean 0.
+
+The above problem can be solved via Single value decomposition of matrix $X$ ,which is a standard technique in linear algebra.
+
+
+Enough maths now let's start implementing PCA in R.
+
+--------------------------------------
+
+
+
+##Implementing PCA in R
+
+```{r}
+
+```
+
 
 
