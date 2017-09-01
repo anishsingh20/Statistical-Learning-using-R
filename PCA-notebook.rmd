@@ -32,3 +32,18 @@ What we try to do is find most relevant set of variables and simply linearly com
 
 We have tons of correlated variables in a high dimentional dataset and what PCA tries to do is pair and combine them to a set of some important variables that summarize all information in the data.
 
+PCA will give us new set of variables called principal components which could be further be used as inputs in a supervised learning model.
+So now we have lesser and most important set of variables paired together to form a new single variable which explains most variance in data.
+This technique is often termed as __Dimentionality Reduction__ which is famous technique to do feature selection and use only relevant features in the Model.
+
+
+###Details
+
+1) we have a set of input vectors $x_1,x_2,x_3.....x_p$ with $n$ observations in dataset.
+
+2) The $1^{st}$ principal component $Z_1$ of a set of features is the __normalized linear combination__ of the features $x_1,x_2....x_p$.
+    $$Z_1=\phi_{1}x_1 + \phi_{{2}}x_2 + \phi_{3}x_3 + .........\phi_{p}x_p $$,
+where p = number of variables.
+
+3) We refer to the weights $\phi_{p}$ 
+
