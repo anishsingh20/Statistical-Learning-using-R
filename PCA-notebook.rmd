@@ -6,3 +6,5 @@ author : "Anish Singh Walia"
 
 ##Unsupervised Learning
 
+Unsupervised learning is a machine learning technique in which the dataset has no target variable or no response value-$$Y$$.The data is unlabelled.
+Simply saying,there is no target value to supervise the learning process for a model $$$f(X)$. 

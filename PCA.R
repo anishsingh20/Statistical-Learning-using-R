@@ -30,3 +30,7 @@ names(pca.out)
 #of the variable
 biplot(pca.out,scale = 0, cex=0.65)
 
+
+
+
+
