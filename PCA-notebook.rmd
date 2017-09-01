@@ -65,13 +65,29 @@ Enough maths now let's start implementing PCA in R.
 
 --------------------------------------
 
-
+We will use USAarrests data
 
 ##Implementing PCA in R
 
 ```{r}
+?USArrests
+#dataset which contains Violent Crime Rates by US State
+dim(USArrests)
+dimnames(USArrests)
+
 
 ```
 
+```{r}
+#finding mean of all 
+apply(USArrests,2,mean)
+apply(USArrests,2,var) #
+
+
+```
+
+There is a lot of difference in variances of each variables. In PCA mean does not playes a role , but variance plays a major role in defining PC so very large differences in variance value of a variable will definately dominate the PC.
+We need to standardize the variable so as to get mean $\mu=0$  and variance $\sigma^2=1$.
+To standardize we use formula$x' = \frac{x - mean(x)}{sd(x)}$.
 
 
