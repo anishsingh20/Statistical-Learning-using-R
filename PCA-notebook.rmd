@@ -43,8 +43,19 @@ This technique is often termed as __Dimentionality Reduction__ which is famous t
 
 2) The $1^{st}$ principal component $Z_1$ of a set of features is the __normalized linear combination__ of the features $x_1,x_2....x_p$.
     $$Z_1=z_{i1} = \sum_{i=1}^n \phi_{11}x_1 + \phi_{{21}}x_2 + \phi_{31}x_3 + .........\phi_{pi}x_p $$,
-where n=no of observations, p = number of variables.
+where n=no of observations, p = number of variables.It is a linear combination to find out the highest variance across data.
+By normalized I mean $\sum_{j=1}^{p} \phi_{j1}^2 = 1$.
 
-3) We refer to the weights $\phi_{ip}$ as __Loadings__.The loadings make up the principal components loading vector.
+3) We refer to the weights $\phi_{pi}$ as __Loadings__.The loadings make up the principal components loading vector.
 $$\phi_1 = (\phi_{11},\phi_{21},\phi_{31}......,\phi_{p1})^T$$ is the loadings vector for $PC_1$.
+
+4) We constrain the loadings so that their sum of squares could be 1 , as otherwise setting these elements to be arbitarily large in absolute value could result in an arbitarily large variance.
+
+
+
+The first Principal component solves the below optimization problem of maximizing variance across the components--
+
+$$maximize: \frac{1}{n} \sum_{i=1}^n \sum_{j=1}^p (\phi{ji}.X_{ij})^2  subject \ to \sum_{j=1}^p \phi_{ji}^2=1  $$
+Here each principal component has mean 0.
+
 
