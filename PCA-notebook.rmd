@@ -6,5 +6,20 @@ author : "Anish Singh Walia"
 
 ##Unsupervised Learning
 
-Unsupervised learning is a machine learning technique in which the dataset has no target variable or no response value-$$Y$$.The data is unlabelled.
-Simply saying,there is no target value to supervise the learning process for a model $$$f(X)$. 
+__Unsupervised__ learning is a machine learning technique in which the dataset has no target variable or no response value-$Y$.The data is unlabelled.
+Simply saying,there is no target value to supervise the learning process of a learner unlike in __Supervised__ learning where we had training examples which had both input variables $X_i$ and target variable-$Y$ -{$(x_i,y_i)$} and by looking and learning from the training examples the learner used to generate a *mapping* function(also called a __hypothesis__) $f : x_i-> y$ which mapped $x_i$ values to $y$ and learned the relationship between input variables and target variable so that we could generalize it to some random unseen test examples and predict the target value.
+
+The best example of unsupervised learning is when a small child given some unlabelled pictures of cats and dogs , so by only looking at the structural similarities and disimilarities between the images , he classifies one as a dog and other as cat.
+
+There are lots of examples of unsupervised learning around us.
+
+__Unsupervised learning is mostly used as a preprocessing process for supervised learning__.e.g-like PCA could be used to select a linear combination of predictors-$X_i$ which explains the most variability in the data , and reduce a high-dimentional dataset to a lower dimentional view with only most relevant and important features which can be used as inputs in a supervised learning model.
+
+e.g If we have a dataset with 100 predictors and we wanted to generate a model,it would be highly inefficient to use all those 100 predictors because that would increase the variance and complexity of the model and which in turn would lead to __overfitting__.Instead what PCA does is find 10 most correlated variables and linearly combine them to generate a principal component -$Z_1$. 
+
+----------------------
+
+
+##Principal Components Analysis
+
+Principal components analysis is such a technique which is used to select a linear combination of variables
