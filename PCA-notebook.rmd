@@ -26,9 +26,9 @@ PCA introduces a lower-dimentional representation of the dataset.It finds a sequ
 
 What we try to do is find most relevant set of variables and simply linearly combine the set of variables into a single variable-$Z_m$.
 
-1)The first principal component $PCA_1$ has the highest variance across data.
+1)The first principal component $PC_1$ has the highest variance across data.
 
-2)The second principal component $PCA_2$ is uncorrelated with $PCA_1$ which also has high variance.
+2)The second principal component $PC_2$ is uncorrelated with $PCA_1$ which also has high variance.
 
 We have tons of correlated variables in a high dimentional dataset and what PCA tries to do is pair and combine them to a set of some important variables that summarize all information in the data.
 
@@ -42,8 +42,9 @@ This technique is often termed as __Dimentionality Reduction__ which is famous t
 1) we have a set of input vectors $x_1,x_2,x_3.....x_p$ with $n$ observations in dataset.
 
 2) The $1^{st}$ principal component $Z_1$ of a set of features is the __normalized linear combination__ of the features $x_1,x_2....x_p$.
-    $$Z_1=\phi_{1}x_1 + \phi_{{2}}x_2 + \phi_{3}x_3 + .........\phi_{p}x_p $$,
-where p = number of variables.
+    $$Z_1=z_{i1} = \sum_{i=1}^n \phi_{11}x_1 + \phi_{{21}}x_2 + \phi_{31}x_3 + .........\phi_{pi}x_p $$,
+where n=no of observations, p = number of variables.
 
-3) We refer to the weights $\phi_{p}$ 
+3) We refer to the weights $\phi_{ip}$ as __Loadings__.The loadings make up the principal components loading vector.
+$$\phi_1 = (\phi_{11},\phi_{21},\phi_{31}......,\phi_{p1})^T$$ is the loadings vector for $PC_1$.
 
