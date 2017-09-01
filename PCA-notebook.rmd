@@ -90,4 +90,41 @@ There is a lot of difference in variances of each variables. In PCA mean does no
 We need to standardize the variable so as to get mean $\mu=0$  and variance $\sigma^2=1$.
 To standardize we use formula$x' = \frac{x - mean(x)}{sd(x)}$.
 
+The function prcomp() will do the needful of standardizing the variables.
 
+
+```{r}
+pca.out<-prcomp(USArrests,scale=TRUE)
+pca.out
+#summary of the PCA
+summary(pca.out)
+names(pca.out)
+
+
+```
+
+Now as we can see maximum % of variance is explained by PC1 , and all PCs are mutually uncorrelated.Around 62 % of variance is explained by $PC_1$.
+
+
+Let's build a biplot to understand better.
+
+```{r}
+biplot(pca.out,scale = 0, cex=0.65)
+
+```
+
+
+Now in the above plot red colored arrows represent the variables and each direction represent the direction which explains the most variation.
+eg for all the countries in the direction of 'UrbanPop' are countries with most urban-population and opposite to tht direction are the countries with least .
+So this is how we interpret our Biplot.
+
+
+
+--------------
+
+
+##Conclusion
+
+PCA is a great preprocessing tool for picking out the most relevant linear combination of variables and use them in our predictive model.It helps us find out the variables which explain the most variation in the data and only use them.PCA plays a major role in the data analysis process before going for advanced analytics.PCA only looks the input variables and them pair them.
+
+The only __drawback__ PCA has is that it generates the principal components in a __unsupervised__ manner i.e without using the __target__ values ,hence the principal components which explain the most variation in dataset without target-$Y$,might or might not explain good percentage of variance in the response variable$Y$. 
