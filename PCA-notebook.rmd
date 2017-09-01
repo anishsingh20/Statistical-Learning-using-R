@@ -13,7 +13,7 @@ The best example of unsupervised learning is when a small child given some unlab
 
 There are lots of examples of unsupervised learning around us.
 
-__Unsupervised learning is mostly used as a preprocessing process for supervised learning__.e.g-like PCA could be used to select a linear combination of predictors-$X_i$ which explains the most variability in the data , and reduce a high-dimentional dataset to a lower dimentional view with only most relevant and important features which can be used as inputs in a supervised learning model.
+__Unsupervised learning is mostly used as a preprocessing tool for supervised learning__.e.g-like PCA could be used to select a linear combination of predictors-$X_i$ which explains the most variability in the data , and reduce a high-dimentional dataset to a lower dimentional view with only most relevant and important features which can be used as inputs in a supervised learning model.
 
 e.g If we have a dataset with 100 predictors and we wanted to generate a model,it would be highly inefficient to use all those 100 predictors because that would increase the variance and complexity of the model and which in turn would lead to __overfitting__.Instead what PCA does is find 10 most correlated variables and linearly combine them to generate a principal component -$Z_1$. 
 
@@ -22,4 +22,13 @@ e.g If we have a dataset with 100 predictors and we wanted to generate a model,i
 
 ##Principal Components Analysis
 
-Principal components analysis is such a technique which is used to select a linear combination of variables
+PCA introduces a lower-dimentional representation of the dataset.It finds a sequence of linear combination of the variables called the principal components-$Z_1,Z_2...Z_m$ that explain the maximum variance in the data and are mutually uncorrelated.
+
+What we try to do is find most relevant set of variables and simply linearly combine the set of variables into a single variable-$Z_m$.
+
+1)The first principal component $PCA_1$ has the highest variance across data.
+
+2)The second principal component $PCA_2$ is uncorrelated with $PCA_1$ which also has high variance.
+
+We have tons of correlated variables in a high dimentional dataset and what PCA tries to do is pair and combine them to a set of some important variables that summarize all information in the data.
+
