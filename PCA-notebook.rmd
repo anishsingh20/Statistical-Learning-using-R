@@ -1,7 +1,9 @@
 ---
 title: "Principal Components Analysis"
-output: html_notebook
-author : "Anish Singh Walia"
+author: "Anish Singh Walia"
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 ##Unsupervised Learning
@@ -127,4 +129,7 @@ So this is how we interpret our Biplot.
 
 PCA is a great preprocessing tool for picking out the most relevant linear combination of variables and use them in our predictive model.It helps us find out the variables which explain the most variation in the data and only use them.PCA plays a major role in the data analysis process before going for advanced analytics.PCA only looks the input variables and them pair them.
 
-The only __drawback__ PCA has is that it generates the principal components in a __unsupervised__ manner i.e without using the __target__ values ,hence the principal components which explain the most variation in dataset without target-$Y$,might or might not explain good percentage of variance in the response variable$Y$. 
+The only __drawback__ PCA has is that it generates the principal components in a __unsupervised__ manner i.e without looking the __target__ values ,hence the principal components which explain the most variation in dataset without target-$Y$ variable,may or may not explain good percentage of variance in the response variable$Y$ which could affect the perfomance of the predictive model. 
+
+Hope you guys liked the article , make sure to like and share it. 
+Happy coding!!
