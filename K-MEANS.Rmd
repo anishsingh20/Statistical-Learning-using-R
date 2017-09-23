@@ -1,6 +1,8 @@
 ---
 title: "Clustering in R"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 This article consists the tutorial on how to cluster data in R. Clustering is a unsupervised learning technique in which the dataset has no target variable $Y$. Clustering mainly aims at finding similarities between the features $X_i$ using a similarity metric and grouping them together into clusters/groups.
@@ -65,3 +67,29 @@ plot(x,col=which,pch=19)
 ```
 
 Now the plot above shows 4 clusters. We know the clusters but now let's feed the data to k-means and check out its performance and how it clusters the data.
+
+
+```{r}
+km.out<-kmeans(x,4,nstart=15)
+km.out
+
+```
+Let's plot the clusters made by K-means algorithm.
+```{r}
+
+plot(x,col=km.out$cluster,cex=2,pch=1,lwd=2)
+points(x,col=which,pch=19)
+points(x,col=c(4,3,2,1)[which],pch=19)
+
+```
+
+Now the inner circles represent the actual cluster assignments , whereas the outer circles represent the cluster assignments by K-means algorithm.
+So we can easily notice the mismatches.
+ 
+---------------------------------
+
+##Conclusion
+
+So this was a small article and tutorial on how to implement K-means clustering in R. K-means clustering is a nice method to cluster numeric data. The only drawback is we need some domain knowledge to tell the algorithm about the number fo clusters we want a-priori. Secondly, K-means is suited only for data which is __normally distributed__ or either standardized. So scaling of variables actually matter a lot in K-means clustering.
+
+
