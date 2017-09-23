@@ -6,3 +6,6 @@ output: html_notebook
 This article consists the tutorial on how to cluster data in R. Clustering is a unsupervised learning technique in which the dataset has no target variable $Y$. Clustering mainly aims at finding similarities between the features $X_i$ using a similarity metric and grouping them together into clusters/groups.
 
 K-Means clustering is a clustering algorithm which aims at clustering __continious(numeric)__ data into clusters which are needed to be specified prior before feeding data to the model.Scaling of features matter in k-means algorithm as it computes the euclidean distance between the cluster centroid and the data points in each iteration, hence we need to standardize the variables if they are skewed or unscaled.
+
+We solve for a objective in k-means i.e we want to minimize the within cluster variance $WCV$ , which simply implies that the points within a cluster should be as close as possible to the cluster centroid.
+$$minimize {\sum_{k=1}^{K} WCV(C_k) } $$ over the clusters $c_1,c_2,c_3.....c_k$.
