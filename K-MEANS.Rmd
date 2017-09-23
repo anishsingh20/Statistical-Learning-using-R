@@ -42,3 +42,20 @@ Local minima is the smallest value of a function within a range.
 Global minima is the smallest value of a function over the enrtire domain. 
 
 So this means that K-means will land you in a valley, but not necessarily in the lowest/deepest valley because the function is not __CONVEX__.
+
+
+--------------
+
+### Implementing K-means in R
+
+K-means can work in any dimension but for purposes of demonstration I will use it in 2-D. I am going to generate some fake data and try to cluster it.
+
+```{r}
+#setting seed
+set.seed(101)
+x=matrix(rnorm(100^2),100,2) # a 100 x 2 dim matrix
+xmean = matrix(rnorm(8,sd=4),4,2) # a 4 x 2 dim matrix
+
+
+```
+
