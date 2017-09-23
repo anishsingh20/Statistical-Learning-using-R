@@ -5,7 +5,16 @@ output: html_notebook
 
 This article consists the tutorial on how to cluster data in R. Clustering is a unsupervised learning technique in which the dataset has no target variable $Y$. Clustering mainly aims at finding similarities between the features $X_i$ using a similarity metric and grouping them together into clusters/groups.
 
-K-Means clustering is a clustering algorithm which aims at clustering __continious(numeric)__ data into clusters which are needed to be specified prior before feeding data to the model.Scaling of features matter in k-means algorithm as it computes the euclidean distance between the cluster centroid and the data points in each iteration, hence we need to standardize the variables if they are skewed or unscaled.
+K-Means clustering is a clustering algorithm which aims at clustering __continious(numeric)__ data into $K$ clusters which are needed to be specified before feeding data to the model.__Scaling__ of features matter in k-means algorithm as it computes the euclidean distance between the cluster centroid and the data points in each iteration, hence we need to standardize the variables if they are skewed or unscaled.
 
 We solve for a objective in k-means i.e we want to minimize the within cluster variance $WCV$ , which simply implies that the points within a cluster should be as close as possible to the cluster centroid.
 $$minimize {\sum_{k=1}^{K} WCV(C_k) } $$ over the clusters $c_1,c_2,c_3.....c_k$.
+
+
+The function can be further written as- 
+$$minimize {\sum_{k=1}^{K} \frac{1}{|C_k|} \sum_{i \in C_k}\sum_{j=1}^{p}(x_{ij}-\bar x_{kj} )^2}$$
+
+, where $K$ are the number of clusters and $|C_k|$ are the number of observations in $K^{th}$ cluster, $p$ are the number of variables,and most importantly $\bar x_{kj}$ is the mean of the $K^{th}$ cluster i.e the __centroid__ value for that cluster.
+
+The centroid value for a cluster is equal to the mean of the observations in that cluster i.e $$ \bar x_{kj} = \frac{1}{|C_k|} \sum_{i \in C_k} x_{ij} $$.
+
