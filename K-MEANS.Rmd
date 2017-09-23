@@ -40,3 +40,5 @@ The algorithm is guaranteed to decrease the value of the objective $WCV(C_k)$. T
 Local minima is the smallest value of a function within a range.
 
 Global minima is the smallest value of a function over the enrtire domain. 
+
+So this means that K-means will land you in a valley, but not necessarily in the lowest/deepest valley because the function is not __CONVEX__.
