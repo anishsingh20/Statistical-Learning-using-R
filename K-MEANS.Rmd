@@ -54,8 +54,14 @@ K-means can work in any dimension but for purposes of demonstration I will use i
 #setting seed
 set.seed(101)
 x=matrix(rnorm(100^2),100,2) # a 100 x 2 dim matrix
-xmean = matrix(rnorm(8,sd=4),4,2) # a 4 x 2 dim matrix
+xmean = matrix(rnorm(8,sd=4),4,2) # a 4 x 2 dim matrix, as we want 4 clusters
 
+which=sample(1:4,100,replace=T) #random sample 
+x=x+xmean[which,]
+
+#plotting the data
+plot(x,col=which,pch=19)
 
 ```
 
+Now the plot above shows 4 clusters. We know the clusters but now let's feed the data to k-means and check out its performance and how it clusters the data.
