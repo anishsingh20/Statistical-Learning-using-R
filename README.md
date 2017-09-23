@@ -55,3 +55,9 @@ http://rpubs.com/anish20/radialSVM
 ### Article on implementing PCA in R and the maths behind it.
 
 http://rpubs.com/anish20/PCA
+
+--------
+
+### Article which explaines K-means clustering algorithm and its implementation in R
+
+http://rpubs.com/anish20/k-means
