@@ -20,3 +20,23 @@ The centroid value for a cluster is equal to the mean of the observations in tha
 
 This simply means that we want to partition the observations into $K$-clusters such that the total within-cluster variation ,summed over all $K$-clusters is as small as possible i.e they are as close to each other as possible.
 
+
+### The K-means algorithm
+
+1) Randomly assign a number 1 to K,to each of the observations. These serves as initial cluster assignments.
+
+2) Iterate until the cluster assignments stop changing :
+      
+       2.a For each of the k-clusters compute the cluster __centroid__. The $K^{th}$ cluster centroid is the __mean__ for the observations in the $K^{th}$ cluster.
+       
+       2.b Assign each observation to the cluster whose __centroid__ is closest to it by calculating the distance between them.(where closest is defined by the distance metric-Euclidean distance).
+       
+       
+3) Stop:if cluster assignments stop changing , else go to : step 2).
+
+
+The algorithm is guaranteed to decrease the value of the objective $WCV(C_k)$. The __local minima__  will be founded by K-means ,however it is not guaranteed that it will give us the __global minima__.
+
+Local minima is the smallest value of a function within a range.
+
+Global minima is the smallest value of a function over the enrtire domain. 
