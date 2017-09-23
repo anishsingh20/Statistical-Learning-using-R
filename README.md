@@ -48,3 +48,10 @@ http://rpubs.com/anish20/svmR
 ### Article on Radial Kernel Support vector classifier
 
 http://rpubs.com/anish20/radialSVM
+
+
+--------
+
+### Article on implementing PCA in R and the maths behind it.
+
+http://rpubs.com/anish20/PCA
