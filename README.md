@@ -12,11 +12,19 @@ and their in depth interpretation. Below are the links to the implementation and
 
 3) Shirinkage Methods and Regularization techniques 
 
-4) Ensemble learning
+4) Non-linear Regression and parametric models
 
-5) Unseupervised learning
+5) Non-parametric model - K-nearest neighbor algorithm
 
+5) Tree based Modelling
 
+6) Bayesian Modelling technique : Naive Bayes algorithm.
+
+7) Ensemble learning
+
+8) Unsupervised learning
+
+9) 
 
 
 ### First Document published on Polynomial Regression Tecnhiques which adds Non linearities to the Model and makes the model learn Non linear Functions.
