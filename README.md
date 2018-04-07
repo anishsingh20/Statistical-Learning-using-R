@@ -8,23 +8,25 @@ and their in depth interpretation. Below are the links to the implementation and
 
 1) Supervised Learning
 
-2) Model Selection techniques
+2) Model Selection techniques - AIC, BIC, Mallow's Cp ,  Adjusted R-squared ,  Cross validation error.
 
-3) Shirinkage Methods and Regularization techniques 
+3) Shrinkage Methods and Regularization techniques - Ridge Regression , LASSO, L1 norm, L2 norm.
 
 4) Non-linear Regression and parametric models
 
 5) Non-parametric model - K-nearest neighbor algorithm
 
-5) Tree based Modelling
+6) Tree based Modelling - Decision Trees
 
-6) Bayesian Modelling technique : Naive Bayes algorithm.
+7) Bayesian Modelling technique : Naive Bayes algorithm.
 
-7) Ensemble learning
+8) Ensemble learning - Random Forests, Gradient Boosting , Bagging.
 
-8) Unsupervised learning
+9) Re-sampling methods and Cross Validation 
 
-9) 
+10) Unsupervised learning
+
+
 
 
 ### First Document published on Polynomial Regression Tecnhiques which adds Non linearities to the Model and makes the model learn Non linear Functions.
