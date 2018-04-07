@@ -4,6 +4,21 @@ This is a Statistical Learning repository which will consist of various Learning
 and their in depth interpretation. Below are the links to the implementation and their in-depth explanation of the learning algorithms in R. All the documents below contain the under-lying mathematical concepts explained with respect to a simple case study in R.
 
 
+### Topics Covered :
+
+1) Supervised Learning
+
+2) Model Selection techniques
+
+3) Shirinkage Methods and Regularization techniques 
+
+4) Ensemble learning
+
+5) Unseupervised learning
+
+
+
+
 ### First Document published on Polynomial Regression Tecnhiques which adds Non linearities to the Model and makes the model learn Non linear Functions.
 
 http://rpubs.com/anish20/polynomialRegression
