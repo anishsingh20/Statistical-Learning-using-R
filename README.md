@@ -1,7 +1,7 @@
 # Statistical-Learning-Techniques
 
-This is a Statistical Learning Application which will consist of various Learning algorithms and their implementation in R 
-and their in depth interpretation.
+This is a Statistical Learning repository which will consist of various Learning algorithms and their implementation in R 
+and their in depth interpretation. Below are the links to the implementation and their in-depth explanation of the learning algorithms in R. All the documents below contain the under-lying mathematical concepts explained with respect to a simple case study in R.
 
 
 ### First Document published on Polynomial Regression Tecnhiques which adds Non linearities to the Model and makes the model learn Non linear Functions.
